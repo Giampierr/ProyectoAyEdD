@@ -1,4 +1,5 @@
 package tienda;
+
 import tienda.modelo.Producto;
 import tienda.repositorio.ProductosRepositorio;
 
@@ -8,60 +9,125 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
-        //    Test
+
         Scanner miScanner = new Scanner(System.in);
 
-//    Datos de entrada
-        String nombre;double precio;int stock;
+        String nombre;
+        double precio;
+        int stock;
+        int id;
+
         List<Producto> misProductos = new ArrayList<>();
-        ProductosRepositorio miInventario = new ProductosRepositorio(misProductos);
+        ProductosRepositorio miInventario =
+                new ProductosRepositorio(misProductos);
+
         int miEntrada = -1;
-//    Inicio del bucle
+
         do {
-            System.out.println("0)Salir");
-            System.out.println("1)Añadir Producto");
-            System.out.println("2)Listar Inventario");
-            System.out.println("3)Buscar Producto por nombre");
-            System.out.println("4)Buscar por id");
-            System.out.println("5)Ordenar por nombre");
-            System.out.println("6)Ordernar por precio");
-            try{
-                System.out.print("Ingrese su opcion :");
+
+            System.out.println("\n0) Salir");
+            System.out.println("1) Añadir Producto");
+            System.out.println("2) Listar Inventario");
+            System.out.println("3) Buscar por nombre");
+            System.out.println("4) Buscar por id");
+            System.out.println("5) Ordenar por nombre");
+            System.out.println("6) Ordenar por precio");
+
+            try {
+
+                System.out.print("Ingrese opción: ");
                 miEntrada = miScanner.nextInt();
-                switch (miEntrada){
-                    case 1 :
-                        System.out.print("Ingrese el nombre del producto :");
-                        nombre = miScanner.next();
-                        miScanner.nextLine();
-                        System.out.print("\nIngrese el precio del producto :");
-                        precio = miScanner.nextDouble();
-                        miScanner.nextLine();
-                        System.out.print("\nIngrese el stock del producto :");
-                        stock = miScanner.nextInt();
-                        miScanner.nextLine();
-                        Producto miProductos= new Producto(nombre,precio,stock);
-                        miInventario.guardar(miProductos);
-                        System.out.println("Producto guardado exitosamente");
+                miScanner.nextLine();
+
+                switch (miEntrada) {
+
+                    case 1:
+
+                        try {
+                            System.out.print("Nombre: ");
+                            nombre = miScanner.nextLine();
+
+                            System.out.print("Precio: ");
+                            precio = miScanner.nextDouble();
+
+                            System.out.print("Stock: ");
+                            stock = miScanner.nextInt();
+                            miScanner.nextLine();
+
+                            Producto producto =
+                                    new Producto(nombre, precio, stock);
+
+                            miInventario.guardar(producto);
+
+                            System.out.println("Producto guardado.");
+
+                        } catch (InputMismatchException e) {
+                            System.out.println("Precio o stock inválido.");
+                            miScanner.nextLine();
+                        }
+
                         break;
-                    case 2 :
+
+                    case 2:
                         System.out.println(miInventario.listarProductos());
                         break;
-                    case 3 :
+
+                    case 3:
+                        System.out.print("Nombre a buscar: ");
+                        nombre = miScanner.nextLine();
+                        System.out.println(
+                                miInventario.busquedaLineal(nombre)
+                        );
                         break;
-                    case 0 :
-                        System.out.println("Saliendo");
+
+                    case 4:
+
+                        try {
+                            System.out.print("ID a buscar: ");
+                            id = miScanner.nextInt();
+                            miScanner.nextLine();
+
+                            System.out.println(
+                                    miInventario.busquedaLinealId(id)
+                            );
+
+                        } catch (InputMismatchException e) {
+                            System.out.println("ID inválido.");
+                            miScanner.nextLine();
+                        }
+
                         break;
-                    default :
-                        System.out.println("Valor Invalido");
+
+                    case 5:
+                        miInventario.ordenarPorNombre();
+                        System.out.println("Ordenado por nombre.");
+                        System.out.println(miInventario.listarProductos());
+                        break;
+
+                    case 6:
+                        miInventario.ordenarPorPrecio();
+                        System.out.println("Ordenado por precio.");
+                        System.out.println(miInventario.listarProductos());
+                        break;
+
+                    case 0:
+                        System.out.println("Saliendo...");
+                        break;
+
+                    default:
+                        System.out.println("Opción inválida.");
                 }
-                //Captura el error de miEntrada y asigna -1 para seguir en el bucle
+
             } catch (InputMismatchException e) {
-                System.out.println("Error Debes ingreser un numero Error :"+e.toString());
+                System.out.println("Debes ingresar un número.");
                 miScanner.nextLine();
             }
-        }while (miEntrada != 0);
+
+        } while (miEntrada != 0);
+
         miScanner.close();
-        System.out.println("Gracias");
+        System.out.println("Gracias.");
     }
 }

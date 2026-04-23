@@ -19,4 +19,62 @@ public class ProductosRepositorio {
         }
         return sb.toString();
     }
+
+    public String busquedaLineal(String nombreBuscado) {
+        for (Producto producto : productos) {
+            if (producto.getNombre().equalsIgnoreCase(nombreBuscado)) {
+                return producto.mostrar();
+            }
+        }
+        return "No se encontro el producto";
+    }
+
+    public String busquedaLinealId(int Id){
+        for (Producto producto : productos) {
+            if (producto.getId() == Id) {
+                return producto.mostrar();
+            }
+        }
+        return "No se encontro el producto";
+    }
+
+    public void ordenarPorNombre() {
+
+        for (int i = 0; i < productos.size() - 1; i++) {
+
+            for (int j = 0; j < productos.size() - 1 - i; j++) {
+
+                String actual = productos.get(j).getNombre();
+                String siguiente = productos.get(j + 1).getNombre();
+
+                if (actual.compareToIgnoreCase(siguiente) > 0) {
+
+                    Producto temp = productos.get(j);
+                    productos.set(j, productos.get(j + 1));
+                    productos.set(j + 1, temp);
+
+                }
+            }
+        }
+    }
+
+    public void ordenarPorPrecio() {
+
+        for (int i = 0; i < productos.size() - 1; i++) {
+
+            for (int j = 0; j < productos.size() - 1 - i; j++) {
+
+                double actual = productos.get(j).getPrecio();
+                double siguiente = productos.get(j + 1).getPrecio();
+
+                if (actual > siguiente) {
+
+                    Producto temp = productos.get(j);
+                    productos.set(j, productos.get(j + 1));
+                    productos.set(j + 1, temp);
+
+                }
+            }
+        }
+    }
 }
