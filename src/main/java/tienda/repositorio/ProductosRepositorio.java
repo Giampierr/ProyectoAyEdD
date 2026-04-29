@@ -1,8 +1,9 @@
 package tienda.repositorio;
 import tienda.modelo.Producto;
+import tienda.interfaces.AlertarBajoStock;
 import java.util.List;
 
-public class ProductosRepositorio {
+public class ProductosRepositorio implements AlertarBajoStock{
     private List<Producto> productos;
 
     public ProductosRepositorio(List<Producto> productos) {
@@ -76,5 +77,15 @@ public class ProductosRepositorio {
                 }
             }
         }
+    }
+    @Override
+    public String alertar() {
+        StringBuilder miBuilder = new StringBuilder();
+        for (int i = 0; i<productos.size();i++){
+            if (productos.get(i).getStock() <10){
+                miBuilder.append(String.format("!!!!!Alerta Stock bajo Id: %s Producto : %s Stock : %s ¡¡¡¡¡¡\n",productos.get(i).getId(),productos.get(i).getNombre(),productos.get(i).getStock()));
+            }
+        }
+        return miBuilder.toString();
     }
 }

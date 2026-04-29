@@ -1,7 +1,7 @@
 package tienda.modelo;
 import tienda.interfaces.AlertarBajoStock;
 import tienda.interfaces.MostrarInformación;
-public class Producto implements MostrarInformación, AlertarBajoStock {
+public class Producto implements MostrarInformación {
     private static int contadorId = 1;
     private int id;
     private String nombre;
@@ -55,14 +55,7 @@ public class Producto implements MostrarInformación, AlertarBajoStock {
         this.stock = stock;
     }
 
-    @Override
-    public String alertar() {
-        if (stock < 10) {
-            return String.format("!!!!!Alerta\n El stock es menor a 10\n Id: %s Producto : %s Stock : %s ¡¡¡¡¡¡",id,nombre,stock);
 
-        }
-        return "Correcto";
-    }
 
     @Override
     public String mostrar() {

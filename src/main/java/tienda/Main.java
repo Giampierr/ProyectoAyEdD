@@ -26,14 +26,16 @@ public class Main {
         int miEntrada = -1;
         int miVista = -1;
         System.out.println("Ingrese  a la vista ");
+        System.out.println("0)  Salir");
         System.out.println("1)  Dueño");
         System.out.println("2)  Vendedor");
         miVista = miScanner.nextInt();
+        miScanner.nextLine();
         try{
             switch (miVista){
                 case 1:
                     do {
-
+                        System.out.println(miInventario.alertar());
                         System.out.println("\n0) Salir");
                         System.out.println("1) Añadir Producto");
                         System.out.println("2) Listar Inventario");
