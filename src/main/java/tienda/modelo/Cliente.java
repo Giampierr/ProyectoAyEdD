@@ -67,6 +67,7 @@ public class Cliente implements MostrarInformación{
 
     @Override
     public String mostrar() {
-        return String.format("Id: %s Nombre : %s dni : %s Email : %s Telefono : %s",id,nombre,dni,email,telefono);
-    }
+        return String.format(
+                "ID: %d | Nombre: %s | DNI: %s | Email: %s | Teléfono: %s",
+                id, nombre, dni, email, telefono);    }
 }

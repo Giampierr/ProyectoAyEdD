@@ -59,7 +59,7 @@ public class Producto implements MostrarInformación {
 
     @Override
     public String mostrar() {
-        return String.format("Id: %s Producto : %s Precio : %s Stock : %s",id,nombre,precio,stock);
+        return String.format("Id: %s | Producto : %s | Precio : %s | Stock : %s",id,nombre,precio,stock);
     }
 
 }

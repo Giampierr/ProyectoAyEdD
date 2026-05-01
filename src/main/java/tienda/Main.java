@@ -2,6 +2,8 @@ package tienda;
 
 import tienda.modelo.Producto;
 import tienda.repositorio.ProductosRepositorio;
+import tienda.servicios.OrdenadorServicio;
+import tienda.servicios.StockServicio;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -22,22 +24,23 @@ public class Main {
         List<Producto> misProductos = new ArrayList<>();
         ProductosRepositorio miInventario =
                 new ProductosRepositorio(misProductos);
-
+        StockServicio stockServicio  = new StockServicio(miInventario);
+        OrdenadorServicio ordenarServicio = new OrdenadorServicio(miInventario);
         int miEntrada = -1;
         int miVista = -1;
 
         do {
             System.out.println("Ingrese  a la vista ");
             System.out.println("0)  Salir");
-            System.out.println("1)  Dueño");
-            System.out.println("2)  Vendedor");
-            miVista = miScanner.nextInt();
-            miScanner.nextLine();
+            System.out.println("1)  Inventariado");
+            System.out.println("2)  Venta");
             try{
+                miVista = miScanner.nextInt();
+                miScanner.nextLine();
                 switch (miVista){
                     case 1:
                         do {
-                            System.out.println(miInventario.alertar());
+                            System.out.println(stockServicio .alertar());
                             System.out.println("\n0) Salir");
                             System.out.println("1) Añadir Producto");
                             System.out.println("2) Listar Inventario");
@@ -45,32 +48,28 @@ public class Main {
                             System.out.println("4) Buscar por id");
                             System.out.println("5) Ordenar por nombre");
                             System.out.println("6) Ordenar por precio");
-
                             try {
-
                                 System.out.print("Ingrese opción: ");
                                 miEntrada = miScanner.nextInt();
                                 miScanner.nextLine();
-
                                 switch (miEntrada) {
-
                                     case 1:
-
                                         try {
                                             System.out.print("Nombre: ");
                                             nombre = miScanner.nextLine();
-
                                             System.out.print("Stock: ");
                                             stock = miScanner.nextInt();
                                             miScanner.nextLine();
-                                            if(miInventario.busquedaLinealBoolean(nombre) == true){
-                                                System.out.println(miInventario.actualizarStock(stock,nombre));
-                                            }else {
+                                            if (stockServicio.actualizarStock(stock, nombre)) {
+                                                System.out.println("Producto encontrado, stock actualizado.");
+                                            } else {
                                                 System.out.print("Precio: ");
                                                 precio = miScanner.nextDouble();
-                                                Producto producto =
-                                                        new Producto(nombre, precio, stock);
+                                                miScanner.nextLine();
+
+                                                Producto producto = new Producto(nombre, precio, stock);
                                                 miInventario.guardar(producto);
+
                                                 System.out.println("Producto guardado.");
                                             }
                                         } catch (InputMismatchException e) {
@@ -111,17 +110,12 @@ public class Main {
                                         break;
 
                                     case 5:
-                                        miInventario.ordenarPorNombre();
-                                        System.out.println("Ordenado por nombre.");
-                                        System.out.println(miInventario.listarProductos());
+                                        System.out.println(ordenarServicio.ordenarPorNombre());
                                         break;
 
                                     case 6:
-                                        miInventario.ordenarPorPrecio();
-                                        System.out.println("Ordenado por precio.");
-                                        System.out.println(miInventario.listarProductos());
+                                        System.out.println(ordenarServicio.ordenarPorPrecio());
                                         break;
-
                                     case 0:
                                         System.out.println("Saliendo...");
                                         break;
@@ -142,7 +136,7 @@ public class Main {
                         System.out.println("Aun por hacer");
                 }
             }catch (InputMismatchException e){
-                System.out.printf("Ingrese un valor valido");
+                System.out.print("Ingrese un valor valido");
             }
         }while(miVista !=0);
         miScanner.close();
