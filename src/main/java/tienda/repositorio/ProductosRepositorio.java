@@ -1,9 +1,10 @@
 package tienda.repositorio;
+import tienda.interfaces.Actualizar;
 import tienda.modelo.Producto;
 import tienda.interfaces.AlertarBajoStock;
 import java.util.List;
 
-public class ProductosRepositorio implements AlertarBajoStock{
+public class ProductosRepositorio implements AlertarBajoStock, Actualizar {
     private List<Producto> productos;
 
     public ProductosRepositorio(List<Producto> productos) {
@@ -28,6 +29,16 @@ public class ProductosRepositorio implements AlertarBajoStock{
             }
         }
         return "No se encontro el producto";
+    }
+
+    //Lo usaré para actualizar stock
+    public boolean busquedaLinealBoolean(String nombreBuscado) {
+        for (Producto producto : productos) {
+            if (producto.getNombre().equalsIgnoreCase(nombreBuscado)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public String busquedaLinealId(int Id){
@@ -79,7 +90,7 @@ public class ProductosRepositorio implements AlertarBajoStock{
         }
     }
     @Override
-    public String alertar() {
+    public String alertar(){
         StringBuilder miBuilder = new StringBuilder();
         for (int i = 0; i<productos.size();i++){
             if (productos.get(i).getStock() <10){
@@ -87,5 +98,16 @@ public class ProductosRepositorio implements AlertarBajoStock{
             }
         }
         return miBuilder.toString();
+    }
+
+    @Override
+    public String actualizarStock(int miStockNuevo, String miProducto) {
+        for (Producto producto : productos) {
+            if (producto.getNombre().equalsIgnoreCase(miProducto)) {
+                int stockActual = producto.getStock();
+                producto.setStock(stockActual + (int)miStockNuevo);
+            }
+        }
+        return "Producto ya encontrado , stock actualizado";
     }
 }

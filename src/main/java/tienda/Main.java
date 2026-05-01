@@ -60,20 +60,19 @@ public class Main {
                                             System.out.print("Nombre: ");
                                             nombre = miScanner.nextLine();
 
-                                            System.out.print("Precio: ");
-                                            precio = miScanner.nextDouble();
-
                                             System.out.print("Stock: ");
                                             stock = miScanner.nextInt();
                                             miScanner.nextLine();
-
-                                            Producto producto =
-                                                    new Producto(nombre, precio, stock);
-
-                                            miInventario.guardar(producto);
-
-                                            System.out.println("Producto guardado.");
-
+                                            if(miInventario.busquedaLinealBoolean(nombre) == true){
+                                                System.out.println(miInventario.actualizarStock(stock,nombre));
+                                            }else {
+                                                System.out.print("Precio: ");
+                                                precio = miScanner.nextDouble();
+                                                Producto producto =
+                                                        new Producto(nombre, precio, stock);
+                                                miInventario.guardar(producto);
+                                                System.out.println("Producto guardado.");
+                                            }
                                         } catch (InputMismatchException e) {
                                             System.out.println("Precio o stock inválido.");
                                             miScanner.nextLine();
