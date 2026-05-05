@@ -2,10 +2,14 @@ package tienda.repositorio;
 import tienda.interfaces.Actualizar;
 import tienda.modelo.Producto;
 import tienda.interfaces.AlertarBajoStock;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductosRepositorio  {
     private List<Producto> productos;
+    private Map<Integer,Producto> productoPorId = new HashMap<>();
 
     public ProductosRepositorio(List<Producto> productos) {
         this.productos = productos;
@@ -24,6 +28,8 @@ public class ProductosRepositorio  {
         guardar(new Producto("Tarjeta Gráfica RTX 4060", 1800.0, 2));
         guardar(new Producto("Tarjeta Gráfica RTX 4080", 3500.0, 1));
     }
+
+    //Regresa una lista Producto para usarse en otra clase
     public List<Producto> getProductos() {
         return productos;
     }
@@ -35,9 +41,13 @@ public class ProductosRepositorio  {
     public List<Producto>listar(){
         return productos;
     }
+
+    //Guarda el producto
     public void guardar(Producto misProducto) {
         productos.add(misProducto);
+        productoPorId.put(misProducto.getId(),misProducto);
     }
+    //
     public String listarProductos() {
         StringBuilder sb = new StringBuilder();
         for (Producto producto : productos) {
@@ -54,13 +64,19 @@ public class ProductosRepositorio  {
         }
         return "No se encontro el producto";
     }
+    //Se renovo(Ya no es lineal ahora es más rapida O(1))
+    public String busquedaId(int Id){
 
-    public String busquedaLinealId(int Id){
-        for (Producto producto : productos) {
-            if (producto.getId() == Id) {
-                return producto.mostrar();
-            }
+        Producto producto = productoPorId.get(Id);
+
+        if (producto != null) {
+             return producto.mostrar();
+        } else {
+            return "No se encontro el producto";
         }
-        return "No se encontro el producto";
     }
+    public Producto buscarPorId(int id) {
+        return productoPorId.get(id);
+    }
+
 }

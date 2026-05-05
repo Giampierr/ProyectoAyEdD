@@ -3,10 +3,13 @@ import tienda.interfaces.MostrarInformación;
 import tienda.modelo.Cliente;
 import tienda.modelo.Producto;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class ClientesRepositorio implements MostrarInformación {
+public class ClientesRepositorio   {
     private List<Cliente> clientes;
+    private Map<String,Cliente> clientePorDni = new HashMap<>();
 
     public ClientesRepositorio(List<Cliente> clientes) {
         this.clientes = clientes;
@@ -20,7 +23,9 @@ public class ClientesRepositorio implements MostrarInformación {
         guardar(new Cliente("Luis Diaz", "36925814", "luis@gmail.com", "900111222"));
     }
     public void guardar(Cliente misClientes) {
+
         clientes.add(misClientes);
+        clientePorDni.put(misClientes.getDni(),misClientes);
     }
 
     public String busquedaLinea(String nombreBuscado) {
@@ -31,18 +36,15 @@ public class ClientesRepositorio implements MostrarInformación {
         }
         return "No se encontro el cliente";
     }
-
+    //Igual
     public String busquedaDni(String dniBuscado) {
-        for (Cliente cliente : clientes) {
-            if (cliente.getDni().equalsIgnoreCase(dniBuscado)) {
-                return cliente.mostrar();
-            }
+        Cliente cliente = clientePorDni.get(dniBuscado);
+        if (cliente != null){
+            return cliente.mostrar();
+        } else {
+            return "No se encontro el cliente ";
+
         }
-        return "No se encontro el cliente ";
     }
 
-    @Override
-    public String mostrar() {
-        return "";
-    }
 }

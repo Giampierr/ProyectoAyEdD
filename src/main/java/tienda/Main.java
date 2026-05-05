@@ -99,7 +99,7 @@ public class Main {
                                             miScanner.nextLine();
 
                                             System.out.println(
-                                                    miInventario.busquedaLinealId(id)
+                                                    miInventario.busquedaId(id)
                                             );
 
                                         } catch (InputMismatchException e) {
