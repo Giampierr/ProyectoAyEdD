@@ -56,6 +56,8 @@ public class ProductosRepositorio  {
         return sb.toString();
     }
 
+    
+
     public String busquedaLineal(String nombreBuscado) {
         for (Producto producto : productos) {
             if (producto.getNombre().equalsIgnoreCase(nombreBuscado)) {
