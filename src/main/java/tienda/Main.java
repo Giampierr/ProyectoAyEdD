@@ -6,6 +6,9 @@ import tienda.repositorio.ProductosRepositorio;
 import tienda.servicios.OrdenadorServicio;
 import tienda.servicios.StockServicio;
 
+import tienda.modelo.Venta;
+import tienda.servicios.ActualizarCarrito;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -141,7 +144,69 @@ public class Main {
                             break;
                         }
                     case 2:
-                        System.out.println("Aun por hacer");
+                        Venta venta = new Venta();
+                        ActualizarCarrito actualizarCarrito = new ActualizarCarrito(miInventario);
+                        int idSeleccionado;
+                        int cantidad;
+
+                        System.out.println("\n===== PRODUCTOS DISPONIBLES =====");
+                        System.out.println(miInventario.listarProductos());
+
+                        boolean comprando = true;
+                        while (comprando) {
+                            System.out.print("Ingrese ID del producto (0 para pagar): ");
+                            try {
+                                idSeleccionado = miScanner.nextInt();
+                                miScanner.nextLine();
+
+                                if (idSeleccionado == 0) {
+                                    if (venta.estaVacio()) {
+                                        System.out.println("No seleccionaste ningún producto.");
+                                    } else {
+                                        actualizarCarrito.procesarVenta(venta);
+                                        System.out.println(venta.mostrarResumen());
+                                        System.out.println("¡Venta realizada con éxito!");
+                                    }
+                                    comprando = false;
+
+                                } else {
+                                    Producto encontrado = miInventario.buscarPorId(idSeleccionado);
+                                    if (encontrado == null) {
+                                        System.out.println("Producto no encontrado.");
+                                    } else if (encontrado.getStock() == 0) {
+                                        System.out.println("Sin stock disponible para: " + encontrado.getNombre());
+                                    } else {
+                                        System.out.print("Cantidad: ");
+                                        try {
+                                            cantidad = miScanner.nextInt();
+                                            miScanner.nextLine();
+                                            if (cantidad <= 0) {
+                                                System.out.println("Cantidad inválida.");
+                                            } else if (cantidad > encontrado.getStock()) {
+                                                System.out.println("Stock insuficiente. Disponible: " + encontrado.getStock());
+                                            } else {
+                                                boolean agregado = actualizarCarrito.agregarAlCarrito(venta, encontrado, cantidad);
+                                                if (agregado) {
+                                                    System.out.println("Agregado: " + encontrado.getNombre() + " x" + cantidad);
+                                                    System.out.println(venta.mostrarCarritoActual());
+                                                    System.out.println("\n===== PRODUCTOS DISPONIBLES =====");
+                                                    System.out.println(miInventario.listarProductos());
+                                                } else {
+                                                    System.out.println("Stock insuficiente.");
+                                                }
+                                            }
+                                        } catch (InputMismatchException e) {
+                                            System.out.println("Cantidad inválida.");
+                                            miScanner.nextLine();
+                                        }
+                                    }
+                                }
+                            } catch (InputMismatchException e) {
+                                System.out.println("Ingrese un número válido.");
+                                miScanner.nextLine();
+                            }
+                        }
+                        break;
                 }
             }catch (InputMismatchException e){
                 System.out.print("Ingrese un valor valido");
