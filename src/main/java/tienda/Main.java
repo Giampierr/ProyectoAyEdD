@@ -149,61 +149,98 @@ public class Main {
                         int idSeleccionado;
                         int cantidad;
 
-                        System.out.println("\n===== PRODUCTOS DISPONIBLES =====");
+                        System.out.println("\nPRODUCTOS DISPONIBLES");
                         System.out.println(miInventario.listarProductos());
 
                         boolean comprando = true;
                         while (comprando) {
-                            System.out.print("Ingrese ID del producto (0 para pagar): ");
+                            if (venta.estaVacio()) {
+                                System.out.print("Ingrese ID del producto (P para pagar): ");
+                            } else {
+                                System.out.print("Ingrese ID del producto (P para pagar o D para devolver producto): ");
+                            }
                             try {
-                                idSeleccionado = miScanner.nextInt();
-                                miScanner.nextLine();
+                                String entrada = miScanner.nextLine().trim();
 
-                                if (idSeleccionado == 0) {
+                                if (entrada.equalsIgnoreCase("P")) {
                                     if (venta.estaVacio()) {
                                         System.out.println("No seleccionaste ningún producto.");
                                     } else {
                                         actualizarCarrito.procesarVenta(venta);
                                         System.out.println(venta.mostrarResumen());
                                         System.out.println("¡Venta realizada con éxito!");
+                                        comprando = false;
                                     }
-                                    comprando = false;
+
+                                } else if (entrada.equalsIgnoreCase("D") && !venta.estaVacio()) {
+                                    System.out.println("\n--- Carrito actual ---");
+                                    for (int i = 0; i < venta.getProductos().size(); i++) {
+                                        Producto p = venta.getProductos().get(i);
+                                        int cant = venta.getCantidades().get(i);
+                                        System.out.printf("  ID: %d | %s x%d | Subtotal: S/%.2f%n",
+                                                p.getId(), p.getNombre(), cant, p.getPrecio() * cant);
+                                    }
+                                    System.out.printf("Total acumulado: S/%.2f%n", venta.calcularTotal());
+                                    System.out.println("----------------------");
+
+                                    System.out.print("Ingrese ID del producto a devolver: ");
+                                    try {
+                                        int idDevolver = Integer.parseInt(miScanner.nextLine().trim());
+                                        System.out.print("Ingrese cantidad a devolver: ");
+                                        try {
+                                            int cantDevolver = Integer.parseInt(miScanner.nextLine().trim());
+                                            if (cantDevolver <= 0) {
+                                                System.out.println("Cantidad inválida.");
+                                            } else {
+                                                System.out.println(actualizarCarrito.devolverProducto(venta, idDevolver, cantDevolver));
+                                                System.out.println(venta.estaVacio() ? "Carrito vacío." : venta.mostrarCarritoActual());
+                                                System.out.println("\nPRODUCTOS DISPONIBLES");
+                                                System.out.println(miInventario.listarProductos());
+                                            }
+                                        } catch (NumberFormatException e) {
+                                            System.out.println("Cantidad inválida.");
+                                        }
+                                    } catch (NumberFormatException e) {
+                                        System.out.println("ID inválido.");
+                                    }
 
                                 } else {
-                                    Producto encontrado = miInventario.buscarPorId(idSeleccionado);
-                                    if (encontrado == null) {
-                                        System.out.println("Producto no encontrado.");
-                                    } else if (encontrado.getStock() == 0) {
-                                        System.out.println("Sin stock disponible para: " + encontrado.getNombre());
-                                    } else {
-                                        System.out.print("Cantidad: ");
-                                        try {
-                                            cantidad = miScanner.nextInt();
-                                            miScanner.nextLine();
-                                            if (cantidad <= 0) {
-                                                System.out.println("Cantidad inválida.");
-                                            } else if (cantidad > encontrado.getStock()) {
-                                                System.out.println("Stock insuficiente. Disponible: " + encontrado.getStock());
-                                            } else {
-                                                boolean agregado = actualizarCarrito.agregarAlCarrito(venta, encontrado, cantidad);
-                                                if (agregado) {
-                                                    System.out.println("Agregado: " + encontrado.getNombre() + " x" + cantidad);
-                                                    System.out.println(venta.mostrarCarritoActual());
-                                                    System.out.println("\n===== PRODUCTOS DISPONIBLES =====");
-                                                    System.out.println(miInventario.listarProductos());
+                                    try {
+                                        idSeleccionado = Integer.parseInt(entrada);
+                                        Producto encontrado = miInventario.buscarPorId(idSeleccionado);
+                                        if (encontrado == null) {
+                                            System.out.println("Producto no encontrado.");
+                                        } else if (encontrado.getStock() == 0) {
+                                            System.out.println("Sin stock disponible para: " + encontrado.getNombre());
+                                        } else {
+                                            System.out.print("Cantidad: ");
+                                            try {
+                                                cantidad = Integer.parseInt(miScanner.nextLine().trim());
+                                                if (cantidad <= 0) {
+                                                    System.out.println("Cantidad inválida.");
+                                                } else if (cantidad > encontrado.getStock()) {
+                                                    System.out.println("Stock insuficiente. Disponible: " + encontrado.getStock());
                                                 } else {
-                                                    System.out.println("Stock insuficiente.");
+                                                    boolean agregado = actualizarCarrito.agregarAlCarrito(venta, encontrado, cantidad);
+                                                    if (agregado) {
+                                                        System.out.println("Agregado: " + encontrado.getNombre() + " x" + cantidad);
+                                                        System.out.println(venta.mostrarCarritoActual());
+                                                        System.out.println("\nPRODUCTOS DISPONIBLES");
+                                                        System.out.println(miInventario.listarProductos());
+                                                    } else {
+                                                        System.out.println("Stock insuficiente.");
+                                                    }
                                                 }
+                                            } catch (NumberFormatException e) {
+                                                System.out.println("Cantidad inválida.");
                                             }
-                                        } catch (InputMismatchException e) {
-                                            System.out.println("Cantidad inválida.");
-                                            miScanner.nextLine();
                                         }
+                                    } catch (NumberFormatException e) {
+                                        System.out.println("Ingrese un ID válido, P o D.");
                                     }
                                 }
-                            } catch (InputMismatchException e) {
-                                System.out.println("Ingrese un número válido.");
-                                miScanner.nextLine();
+                            } catch (Exception e) {
+                                System.out.println("Entrada inválida.");
                             }
                         }
                         break;
