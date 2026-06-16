@@ -3,16 +3,16 @@ import tienda.interfaces.Actualizar;
 import tienda.modelo.Producto;
 import tienda.interfaces.AlertarBajoStock;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ProductosRepositorio  {
-    private List<Producto> productos;
+    private List<Producto> productos = new ArrayList<>();
     private Map<Integer,Producto> productoPorId = new HashMap<>();
 
-    public ProductosRepositorio(List<Producto> productos) {
-        this.productos = productos;
+    public ProductosRepositorio() {
         cargarDatosIniciales();
     }
 
