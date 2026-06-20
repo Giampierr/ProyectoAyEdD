@@ -9,14 +9,17 @@ import java.util.List;
 import java.util.Map;
 
 public class ProductosRepositorio  {
-    private List<Producto> productos = new ArrayList<>();
-    private Map<Integer,Producto> productoPorId = new HashMap<>();
+    private ArrayList<Producto> listaProductos = new ArrayList<>();
+    private Map<Integer,Producto> hashProductos = new HashMap<>();
+    //Aqui agrega el tipo de dato Arbol (arbolProducto)
+
 
     public ProductosRepositorio() {
         cargarDatosIniciales();
     }
 
     private void cargarDatosIniciales() {
+        //Aqui se cargan los  datos (100 productos)
         guardar(new Producto("Laptop", 2500.0, 5));
         guardar(new Producto("Laptop Gamer", 4200.0, 3));
         guardar(new Producto("RAM 8GB", 120.0, 15));
@@ -30,36 +33,35 @@ public class ProductosRepositorio  {
     }
 
     //Regresa una lista Producto para usarse en otra clase
-    public List<Producto> getProductos() {
-        return productos;
-    }
 
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
-    }
 
     public List<Producto>listar(){
-        return productos;
+        return listaProductos;
     }
 
-    //Guarda el producto
     public void guardar(Producto misProducto) {
-        productos.add(misProducto);
-        productoPorId.put(misProducto.getId(),misProducto);
+        listaProductos.add(misProducto);
+        hashProductos.put(misProducto.getId(),misProducto);
+
+        //Guardalo Aqui
     }
-    //
+
     public String listarProductos() {
         StringBuilder sb = new StringBuilder();
-        for (Producto producto : productos) {
+        for (Producto producto : listaProductos) {
             sb.append(producto.mostrar()+"\n");
         }
         return sb.toString();
     }
 
+    //Completa aqui el filtrado
+    public String filtrarProducto(double precio){
+        return "";
+    }
     
 
-    public String busquedaLineal(String nombreBuscado) {
-        for (Producto producto : productos) {
+    public String busquedaNombre(String nombreBuscado) {
+        for (Producto producto : listaProductos) {
             if (producto.getNombre().equalsIgnoreCase(nombreBuscado)) {
                 return producto.mostrar();
             }
@@ -69,7 +71,7 @@ public class ProductosRepositorio  {
     //Se renovo(Ya no es lineal ahora es más rapida O(1))
     public String busquedaId(int Id){
 
-        Producto producto = productoPorId.get(Id);
+        Producto producto = hashProductos.get(Id);
 
         if (producto != null) {
              return producto.mostrar();
@@ -78,7 +80,7 @@ public class ProductosRepositorio  {
         }
     }
     public Producto buscarPorId(int id) {
-        return productoPorId.get(id);
+        return hashProductos.get(id);
     }
 
 }

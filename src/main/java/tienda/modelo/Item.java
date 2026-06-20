@@ -3,14 +3,38 @@ package tienda.modelo;
 public class Item {
     private Producto producto;
     private int cantidad;
-    private double subtotal;
 
-    public Item() {
-        this.subtotal = calcularSubtotal();
+
+    public Item(Producto producto, int cantidad) {
+        this.producto = producto;
+        this.cantidad = cantidad;
     }
 
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public int obtenerId(){
+        return producto.getId();
+    }
+
+    public int obtenerStock(){
+        return producto.getStock();
+    }
     public double calcularSubtotal(){
         return producto.getPrecio()*cantidad;
     }
 
+    public String mostrar(){
+        return String.format("Nombre : %s p/u : %.2f Cantidad : %s Subtotal : %.2f",producto.getNombre(),producto.getPrecio(),cantidad,calcularSubtotal());
+    }
 }

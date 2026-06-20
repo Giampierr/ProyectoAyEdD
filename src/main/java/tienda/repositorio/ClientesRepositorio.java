@@ -1,21 +1,21 @@
 package tienda.repositorio;
-import tienda.interfaces.MostrarInformación;
-import tienda.modelo.Cliente;
-import tienda.modelo.Producto;
 
+import tienda.modelo.Cliente;
+
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ClientesRepositorio   {
-    private List<Cliente> clientes;
+    private ArrayList<Cliente> clientes = new ArrayList<>();
     private Map<String,Cliente> clientePorDni = new HashMap<>();
 
-    public ClientesRepositorio(List<Cliente> clientes) {
-        this.clientes = clientes;
+    public ClientesRepositorio() {
         cargarClientesIniciales();
     }
     private void cargarClientesIniciales() {
+        //Aqui se cargan los  datos (100 clientes)
+
         guardar(new Cliente("Juan Perez", "12345678", "juan@gmail.com", "987654321"));
         guardar(new Cliente("Maria Lopez", "87654321", "maria@gmail.com", "912345678"));
         guardar(new Cliente("Carlos Ramos", "45678912", "carlos@gmail.com", "999888777"));
@@ -37,14 +37,10 @@ public class ClientesRepositorio   {
         return "No se encontro el cliente";
     }
     //Igual
-    public String busquedaDni(String dniBuscado) {
+    public Cliente busquedaDni(String dniBuscado) {
         Cliente cliente = clientePorDni.get(dniBuscado);
-        if (cliente != null){
-            return cliente.mostrar();
-        } else {
-            return "No se encontro el cliente ";
 
-        }
+        return cliente;
     }
 
 }

@@ -1,26 +1,54 @@
 package tienda.repositorio;
 
+import tienda.base.Venta;
 import tienda.interfaces.RepositorioGenerico;
-import tienda.modelo.Ventas;
+import tienda.modelo.VentaDirecta;
 
-public class RepositorioVentas implements RepositorioGenerico<Ventas> {
-    @Override
-    public void agregar(Ventas entidad) {
+import java.util.ArrayList;
+import java.util.HashMap;
 
+public class RepositorioVentas implements RepositorioGenerico<Venta> {
+    ArrayList<Venta> listaVentaDirecta = new ArrayList<>();
+    HashMap <Integer, Venta> hashVentaDirecta = new HashMap<>();
+
+    public RepositorioVentas() {
+        cargarDatosIniciales();
+    }
+
+    public void cargarDatosIniciales(){
+        //Aqui se cargan las ventas(15)
     }
 
     @Override
-    public Ventas buscar() {
+    public String agregar(Venta entidad) {
+        listaVentaDirecta.add(entidad);
+        hashVentaDirecta.put(entidad.getId(),entidad);
+
+        return "Venta Agregada";
+    }
+
+    @Override
+    public Venta buscar() {
         return null;
     }
 
     @Override
-    public void eliminar(Ventas producto) {
+    public void eliminar(Venta producto) {
 
     }
 
     @Override
     public String listar() {
-        return "";
+        StringBuilder miBuilder = new StringBuilder();
+        miBuilder.append("--------Lista Venta---------").append("\n");
+
+        for (Venta venta : listaVentaDirecta) {
+            miBuilder.append(venta.mostrarResumen()).append("\n");
+        }
+
+
+        return miBuilder.toString();
     }
+
+
 }

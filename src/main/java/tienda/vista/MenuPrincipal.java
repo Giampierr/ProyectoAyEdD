@@ -37,7 +37,7 @@ public class MenuPrincipal {
                         break;
                 }
             }catch (InputMismatchException e){
-                System.out.print("Ingrese un valor valido");
+                System.out.println("Ingrese un valor valido");
             }
         }while(miVista !=0);
         miScanner.close();

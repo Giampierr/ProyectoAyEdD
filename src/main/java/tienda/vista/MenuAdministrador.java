@@ -3,8 +3,11 @@ package tienda.vista;
 import tienda.modelo.Admin;
 import tienda.modelo.Producto;
 import tienda.repositorio.ProductosRepositorio;
+import tienda.repositorio.RepositorioPedidos;
+import tienda.repositorio.RepositorioVentas;
 import tienda.servicios.OrdenadorServicio;
 import tienda.servicios.StockServicio;
+import tienda.servicios.VentaServicio;
 
 import java.security.PrivateKey;
 import java.util.InputMismatchException;
@@ -14,17 +17,23 @@ public class MenuAdministrador {
     private Admin admin;
     private ProductosRepositorio miInventario;
     private StockServicio stockServicio;
+    private VentaServicio ventaServicio;
     private OrdenadorServicio ordenarServicio;
+    private RepositorioVentas repositorioVentas;
+    private RepositorioPedidos repositorioPedido;
 
-    public MenuAdministrador(Admin admin, ProductosRepositorio miInventario, OrdenadorServicio ordenarServicio, StockServicio stockServicio) {
+    public MenuAdministrador(Admin admin, ProductosRepositorio miInventario, OrdenadorServicio ordenarServicio, StockServicio stockServicio, RepositorioVentas repositorioVentas, RepositorioPedidos repositorioPedido,VentaServicio ventaServicio) {
         this.admin = admin;
         this.miInventario = miInventario;
         this.ordenarServicio = ordenarServicio;
         this.stockServicio = stockServicio;
+        this.repositorioVentas = repositorioVentas;
+        this.repositorioPedido = repositorioPedido;
+        this.ventaServicio = ventaServicio;
     }
 
     void inicar(){
-        int miEntrada = -1,id,stock;
+        int miEntrada = -1,id,stock,alertaCon = 0;
         String nombre;
         double precio;
 
@@ -34,7 +43,10 @@ public class MenuAdministrador {
         miScanner.nextLine();
         if (admin.validarPassword(password) == true) {
             do {
-                System.out.println(stockServicio .alertar());
+                if (alertaCon < 2) {
+                    System.out.println(stockServicio .alertar());
+                    alertaCon++;
+                }
                 System.out.println("\n0) Salir");
                 System.out.println("1) Añadir Producto");
                 System.out.println("2) Listar Inventario");
@@ -42,6 +54,12 @@ public class MenuAdministrador {
                 System.out.println("4) Buscar por id");
                 System.out.println("5) Ordenar por nombre");
                 System.out.println("6) Ordenar por precio");
+                System.out.println("7) Ver ventas");
+                System.out.println("8) Ver pedidos");
+                System.out.println("9) Atender Primer Pedido");
+                System.out.println("10.Rechazar Pedido");
+
+
                 try {
                     System.out.print("Ingrese opción: ");
                     miEntrada = miScanner.nextInt();
@@ -81,7 +99,7 @@ public class MenuAdministrador {
                             System.out.print("Nombre a buscar: ");
                             nombre = miScanner.nextLine();
                             System.out.println(
-                                    miInventario.busquedaLineal(nombre)
+                                    miInventario.busquedaNombre(nombre)
                             );
                             break;
 
@@ -109,6 +127,20 @@ public class MenuAdministrador {
 
                         case 6:
                             System.out.println(ordenarServicio.ordenarPorPrecio());
+                            break;
+                        case 7:
+                            System.out.println(repositorioVentas.listar());
+
+                            break;
+                        case 8:
+                            System.out.println(repositorioPedido.listarResumen());
+
+                            break;
+                        case 9:
+                            System.out.println(ventaServicio.atenderPrimerPedido());
+                            break;
+                        case 10:
+                            System.out.println(ventaServicio.rechazarPedido());
                             break;
                         case 0:
                             System.out.println("Saliendo...");

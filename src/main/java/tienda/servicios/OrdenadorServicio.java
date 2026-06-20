@@ -3,49 +3,73 @@ package tienda.servicios;
 import tienda.modelo.Producto;
 import tienda.repositorio.ProductosRepositorio;
 
+import java.util.ArrayList;
+
 public class OrdenadorServicio {
     private ProductosRepositorio repo;
 
     public OrdenadorServicio(ProductosRepositorio repo) {
         this.repo = repo;
     }
+
+
     public String ordenarPorNombre(){
-        for (int i = 0; i < repo.listar().size()- 1; i++) {
 
-            for (int j = 0; j < repo.listar().size() - 1 - i; j++) {
+        ArrayList<Producto> copiaProductos = new ArrayList<>(repo.listar());
 
-                String actual = repo.listar().get(j).getNombre();
-                String siguiente = repo.listar().get(j + 1).getNombre();
+
+        for (int i = 0; i < copiaProductos.size()- 1; i++) {
+
+            for (int j = 0; j < copiaProductos.size() - 1 - i; j++) {
+
+                String actual = copiaProductos.get(j).getNombre();
+                String siguiente =copiaProductos.get(j + 1).getNombre();
 
                 if (actual.compareToIgnoreCase(siguiente) > 0) {
 
-                    Producto temp = repo.listar().get(j);
-                    repo.listar().set(j, repo.listar().get(j + 1));
-                    repo.listar().set(j + 1, temp);
+                    Producto temp =copiaProductos.get(j);
+                    copiaProductos.set(j, copiaProductos.get(j + 1));
+                    copiaProductos.set(j + 1, temp);
 
                 }
             }
         }
-        return repo.listarProductos().toString();
+
+        StringBuilder miBuilder = new StringBuilder();
+
+        for (Producto producto : copiaProductos) {
+            miBuilder.append(producto.mostrar()).append("\n");
+        }
+
+        return miBuilder.toString();
     }
 
     public String ordenarPorPrecio(){
-        for (int i = 0; i < repo.listar().size() - 1; i++) {
 
-            for (int j = 0; j < repo.listar().size() - 1 - i; j++) {
+        ArrayList<Producto> copiaProductos = new ArrayList<>(repo.listar());
 
-                double actual = repo.listar().get(j).getPrecio();
-                double siguiente = repo.listar().get(j + 1).getPrecio();
+        for (int i = 0; i < copiaProductos.size() - 1; i++) {
+
+            for (int j = 0; j < copiaProductos.size() - 1 - i; j++) {
+
+                double actual = copiaProductos.get(j).getPrecio();
+                double siguiente = copiaProductos.get(j + 1).getPrecio();
 
                 if (actual > siguiente) {
 
-                    Producto temp = repo.listar().get(j);
-                    repo.listar().set(j, repo.listar().get(j + 1));
-                    repo.listar().set(j + 1, temp);
+                    Producto temp = copiaProductos.get(j);
+                    copiaProductos.set(j, copiaProductos.get(j + 1));
+                    copiaProductos.set(j + 1, temp);
 
                 }
             }
         }
-        return repo.listarProductos().toString();
-    }
+
+        StringBuilder miBuilder = new StringBuilder();
+
+        for (Producto producto : copiaProductos) {
+            miBuilder.append(producto.mostrar()).append("\n");
+        }
+
+        return miBuilder.toString();    }
 }
