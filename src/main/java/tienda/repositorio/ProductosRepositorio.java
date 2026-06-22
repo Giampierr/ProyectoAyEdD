@@ -1,4 +1,5 @@
 package tienda.repositorio;
+import tienda.estructuras.ListaEnlazadaProductos;
 import tienda.interfaces.Actualizar;
 import tienda.modelo.Producto;
 import tienda.interfaces.AlertarBajoStock;
@@ -10,6 +11,7 @@ import java.util.Map;
 
 public class ProductosRepositorio  {
     private ArrayList<Producto> listaProductos = new ArrayList<>();
+    private ListaEnlazadaProductos listaEnlazadaProductosProductos = new ListaEnlazadaProductos();
     private Map<Integer,Producto> hashProductos = new HashMap<>();
     //Aqui agrega el tipo de dato Arbol (arbolProducto)
 
@@ -42,8 +44,7 @@ public class ProductosRepositorio  {
     public void guardar(Producto misProducto) {
         listaProductos.add(misProducto);
         hashProductos.put(misProducto.getId(),misProducto);
-
-        //Guardalo Aqui
+        listaEnlazadaProductosProductos.agregar(misProducto);
     }
 
     public String listarProductos() {
