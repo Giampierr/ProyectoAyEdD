@@ -1,4 +1,5 @@
 package tienda.repositorio;
+import tienda.estructuras.ArbolBST;
 import tienda.estructuras.ListaEnlazadaProductos;
 import tienda.interfaces.Actualizar;
 import tienda.modelo.Producto;
@@ -13,6 +14,7 @@ public class ProductosRepositorio  {
     private ArrayList<Producto> listaProductos = new ArrayList<>();
     private ListaEnlazadaProductos listaEnlazadaProductosProductos = new ListaEnlazadaProductos();
     private Map<Integer,Producto> hashProductos = new HashMap<>();
+    private final ArbolBST arbol = new ArbolBST();
     //Aqui agrega el tipo de dato Arbol (arbolProducto)
 
 
@@ -34,6 +36,8 @@ public class ProductosRepositorio  {
         guardar(new Producto("Tarjeta Gráfica RTX 4080", 3500.0, 1));
     }
 
+
+
     //Regresa una lista Producto para usarse en otra clase
 
 
@@ -45,6 +49,7 @@ public class ProductosRepositorio  {
         listaProductos.add(misProducto);
         hashProductos.put(misProducto.getId(),misProducto);
         listaEnlazadaProductosProductos.agregar(misProducto);
+        arbol.insertar(misProducto);
     }
 
     public String listarProductos() {
@@ -56,8 +61,9 @@ public class ProductosRepositorio  {
     }
 
     //Completa aqui el filtrado
-    public String filtrarProducto(double precio){
-        return "";
+    public List<Producto> filtrarPreciosMenoresA(double precio){
+
+        return arbol.filtrarMenoresA(precio);
     }
     
 

@@ -1,10 +1,12 @@
 package tienda.vista;
 
 import tienda.modelo.Cliente;
+import tienda.modelo.Producto;
 import tienda.repositorio.ClientesRepositorio;
 import tienda.repositorio.ProductosRepositorio;
 import tienda.servicios.VentaServicio;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuVenta {
@@ -33,7 +35,7 @@ public class MenuVenta {
             System.out.println("4.Vaciar Carrito");
             System.out.println("5.Procesar Venta");
             System.out.println("6.Procesar Pedido");
-            System.out.println("7.Filtrar precios menoresa a");
+            System.out.println("7.Filtrar precios menores a");
             System.out.println("0.Salir");
             miVista = miScanner.nextInt();
             switch (miVista){
@@ -79,7 +81,16 @@ public class MenuVenta {
                 case 7:
                     System.out.println("Ingrese un precio :");
                     precio = miScanner.nextDouble();
-                    System.out.println(miRepoProductos.filtrarProducto(precio));
+                    List<Producto> resultado = miRepoProductos.filtrarPreciosMenoresA(precio);
+                    if (resultado.isEmpty()) {
+                        System.out.println("No se encontraron productos menores a " + precio);
+                    } else {
+                        System.out.println("Productos menores a " + precio + ":");
+                        for (Producto p : resultado) {
+                            System.out.println("- " + p.getNombre() + " S/ " + p.getPrecio());
+                        }
+                    }
+                    break;
 
             }
         }while(miVista != 0);
