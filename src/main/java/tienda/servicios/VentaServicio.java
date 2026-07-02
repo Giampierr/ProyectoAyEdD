@@ -89,7 +89,7 @@ public class VentaServicio  {
             for (Item forListaItem : listaItems) {
                 miBuilder.append(forListaItem.mostrar()).append("\n");
             }
-
+            miBuilder.append("=========================");
             return miBuilder.toString();
         } else {
             return "Carrito vacio";

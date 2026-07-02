@@ -35,6 +35,6 @@ public class Item {
     }
 
     public String mostrar(){
-        return String.format("Nombre : %s p/u : %.2f Cantidad : %s Subtotal : %.2f",producto.getNombre(),producto.getPrecio(),cantidad,calcularSubtotal());
+        return String.format("Nombre : %-30s p/u : %.2f Cantidad : %-3s Subtotal : %-4.2f",producto.getNombre(),producto.getPrecio(),cantidad,calcularSubtotal());
     }
 }

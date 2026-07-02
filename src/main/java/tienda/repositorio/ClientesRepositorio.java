@@ -23,7 +23,6 @@ public class ClientesRepositorio   {
         guardar(new Cliente("Luis Diaz", "36925814", "luis@gmail.com", "900111222"));
     }
     public void guardar(Cliente misClientes) {
-
         clientes.add(misClientes);
         clientePorDni.put(misClientes.getDni(),misClientes);
     }

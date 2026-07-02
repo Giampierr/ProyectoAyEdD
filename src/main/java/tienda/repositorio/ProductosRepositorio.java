@@ -55,8 +55,10 @@ public class ProductosRepositorio  {
     public String listarProductos() {
         StringBuilder sb = new StringBuilder();
         for (Producto producto : listaProductos) {
-            sb.append(producto.mostrar()+"\n");
+            sb.append(producto.mostrar()).append("\n");
         }
+        sb.append("=========================");
+
         return sb.toString();
     }
 
@@ -67,13 +69,14 @@ public class ProductosRepositorio  {
     }
     
 
-    public String busquedaNombre(String nombreBuscado) {
+    public Producto busquedaNombre(String nombreBuscado) {
+
         for (Producto producto : listaProductos) {
             if (producto.getNombre().equalsIgnoreCase(nombreBuscado)) {
-                return producto.mostrar();
+                return producto;
             }
         }
-        return "No se encontro el producto";
+        return null;
     }
     //Se renovo(Ya no es lineal ahora es más rapida O(1))
     public String busquedaId(int Id){
@@ -90,4 +93,34 @@ public class ProductosRepositorio  {
         return hashProductos.get(id);
     }
 
+    public String actualizarPrecio(double precio,int id){
+        Producto producto = hashProductos.get(id);
+
+        if (producto == null){
+            return "Id no encontrado";
+        }
+
+        if (precio >=0){
+            producto.setPrecio(precio);
+            return "Precio actualizado";
+        }else{
+            return "Precio inválido";
+        }
+    }
+
+    public String actualizarStock(int stock, int id){
+
+        Producto producto = hashProductos.get(id);
+
+        if (producto == null){
+            return "Id no encontrado";
+        }
+
+        if (stock >=0){
+            producto.setStock(stock);
+            return "Stock actualizado";
+        }else{
+            return "Stock inválido";
+        }
+    }
 }

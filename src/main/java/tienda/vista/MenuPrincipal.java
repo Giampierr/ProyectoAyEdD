@@ -20,10 +20,10 @@ public class MenuPrincipal {
         int miVista = -1;
 
         do {
-            System.out.println("Ingrese a la vista ");
             System.out.println("0)  Salir");
             System.out.println("1)  Inventariado");
             System.out.println("2)  Venta");
+            System.out.println("Ingrese a la vista ");
             try{
 
                 miVista = miScanner.nextInt();
@@ -38,6 +38,7 @@ public class MenuPrincipal {
                 }
             }catch (InputMismatchException e){
                 System.out.println("Ingrese un valor valido");
+                miScanner.nextLine();
             }
         }while(miVista !=0);
         miScanner.close();
