@@ -37,11 +37,15 @@ public class MenuAdministrador {
         String nombre;
         double precio;
 
+
         Scanner miScanner = new Scanner(System.in);
         System.out.println("Ingresa la contraseña");
         String password = miScanner.next();
         miScanner.nextLine();
-        if (admin.validarPassword(password)) {
+        System.out.println("Ingresa el usuario");
+        String usuario = miScanner.next();
+        miScanner.nextLine();
+        if (admin.validarPassword(password,usuario)) {
             do {
                 if (alertaCon < 2) {
                     System.out.println(stockServicio .alertar());
@@ -59,7 +63,8 @@ public class MenuAdministrador {
                 System.out.println("9) Ver ventas");
                 System.out.println("10) Ver pedidos");
                 System.out.println("11) Atender Primer Pedido");
-                System.out.println("12).Rechazar Pedido");
+                System.out.println("12) Rechazar Pedido");
+                System.out.println("13) Buscar Venta");
                 try {
                     System.out.print("Ingrese opción: ");
                     miEntrada = miScanner.nextInt();
@@ -187,6 +192,12 @@ public class MenuAdministrador {
                             break;
                         case 12:
                             System.out.println(ventaServicio.rechazarPedido());
+                            break;
+                        case 13 :
+                            System.out.print("Ingrese el id de la venta :");
+                            id = miScanner.nextInt();
+                            miScanner.nextLine();
+                            System.out.println(repositorioVentas.buscarPorId(id));
                             break;
                         case 0:
                             System.out.println("Saliendo...");

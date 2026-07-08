@@ -1,5 +1,10 @@
 package tienda;
 
+import javafx.fxml.FXMLLoader;
+import javafx.application.Application;
+
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import tienda.base.Venta;
 import tienda.modelo.Admin;
 import tienda.modelo.VentaDirecta;
@@ -16,10 +21,20 @@ import tienda.vista.MenuAdministrador;
 import tienda.vista.MenuPrincipal;
 import tienda.vista.MenuVenta;
 
-public class Main {
+public class Main extends Application{
 
-    public static void main(String[] args) {
-        Admin admin = new Admin("admin");
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/inicio.fxml"));
+
+        Scene scene = new Scene(loader.load());
+
+        primaryStage.setTitle("Sistema de Ventas");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        Admin admin = new Admin("admin123","angelo");
         ProductosRepositorio miRepoProductos = new ProductosRepositorio();
         ClientesRepositorio miRepoClientes = new ClientesRepositorio();
         RepositorioVentas miRepoVentas = new RepositorioVentas();
@@ -34,8 +49,13 @@ public class Main {
         MenuVenta menuVenta = new MenuVenta(miRepoClientes,miRepoProductos,ventaServicio);
         MenuPrincipal menuPrincipal = new MenuPrincipal(menuAdministrador,menuVenta);
 
+        //Asi no inicia
+        //menuPrincipal.iniciar();
 
-        menuPrincipal.iniciar();
 
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }

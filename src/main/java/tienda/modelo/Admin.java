@@ -1,17 +1,16 @@
 package tienda.modelo;
 
 public class Admin {
-    private int contador = 1;
-    private int id;
+    private String usuario;
     private String password;
 
 
-    public Admin(String password) {
-        this.id = contador++;
+    public Admin(String password,String usuario) {
         this.password = password;
+        this.usuario = usuario;
     }
-    public boolean validarPassword(String password) {
-        if (password.equals(this.password)) {
+    public boolean validarPassword(String password,String usuario) {
+        if (password.equals(this.password) && usuario.equals(usuario)) {
             return true;
         }
         return false;

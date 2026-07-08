@@ -38,6 +38,17 @@ public class RepositorioVentas implements RepositorioGenerico<Venta> {
 
     }
 
+    public String buscarPorId(int id){
+        Venta venta = hashVentaDirecta.get(id);
+
+        if (venta != null) {
+            return venta.mostrar();
+        } else {
+            return "Id no encontrado ";
+        }
+    }
+
+
     @Override
     public String listar() {
         StringBuilder miBuilder = new StringBuilder();
