@@ -87,7 +87,7 @@ public class MenuVenta {
                     } else {
                         System.out.println("Productos menores a " + precio + ":");
                         for (Producto p : resultado) {
-                            System.out.println(p.mostrar());
+                            System.out.println("- " + p.getNombre() + " S/ " + p.getPrecio());
                         }
                     }
                     break;
