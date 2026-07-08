@@ -46,6 +46,13 @@ public class ProductosRepositorio  {
     }
 
     public void guardar(Producto misProducto) {
+        Producto miProducto = hashProductos.putIfAbsent(misProducto.getId(), misProducto);
+
+
+        if(miProducto != null){
+            int nuevoStock = miProducto.getStock()+misProducto.getStock();
+            misProducto.setStock(nuevoStock);
+        }
         listaProductos.add(misProducto);
         hashProductos.put(misProducto.getId(),misProducto);
         listaEnlazadaProductosProductos.agregar(misProducto);

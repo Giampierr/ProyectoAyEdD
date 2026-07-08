@@ -1,7 +1,9 @@
 package tienda;
 
+import tienda.base.Venta;
 import tienda.modelo.Admin;
 import tienda.modelo.VentaDirecta;
+import tienda.modelo.VentaPedido;
 import tienda.repositorio.ClientesRepositorio;
 import tienda.repositorio.ProductosRepositorio;
 import tienda.repositorio.RepositorioPedidos;
@@ -18,7 +20,6 @@ public class Main {
 
     public static void main(String[] args) {
         Admin admin = new Admin("admin");
-
         ProductosRepositorio miRepoProductos = new ProductosRepositorio();
         ClientesRepositorio miRepoClientes = new ClientesRepositorio();
         RepositorioVentas miRepoVentas = new RepositorioVentas();
