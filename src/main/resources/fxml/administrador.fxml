@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tienda.controladores.AdministradorController">
+
+    <!-- Sidebar -->
+    <left>
+        <VBox prefHeight="700.0" prefWidth="247.0" spacing="10" style="-fx-background-color: #2C3E50; -fx-padding: 0;" styleClass="sidebar">
+
+            <padding>
+                <Insets bottom="20" left="10" right="10" top="20" />
+            </padding>
+
+            <Label prefHeight="59.0" prefWidth="247.0" style="-fx-text-fill: white;                           -fx-font-size: 18px;                           -fx-font-weight: bold;" text="Sistema de Venta" textAlignment="JUSTIFY" textFill="#323131" />
+
+            <VBox prefHeight="544.0" prefWidth="264.0" style="-fx-padding: 0;" VBox.vgrow="ALWAYS">
+            <children>
+                <Button maxWidth="Infinity"  prefHeight="43.0" prefWidth="219.0" style="-fx-background-color: #2C3E50;" text="DashBoard" textFill="#f5f2f2" onAction="#mostrarDashboard">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <graphic>
+                        <FontIcon iconLiteral="fas-home"
+                                  iconColor="white"/>
+                    </graphic>
+                </Button>
+               <Button maxWidth="Infinity"  prefHeight="43.0" prefWidth="219.0" style="-fx-background-color: #2C3E50;" text="Ventas" textFill="#f5f2f2">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+                   <graphic>
+                       <FontIcon iconLiteral="fas-chart-bar"
+                       iconColor="white"/>
+                   </graphic>
+               </Button>
+
+                  <Button maxWidth="Infinity"  prefHeight="43.0" prefWidth="219.0" style="-fx-background-color: #2C3E50;" text="Pedidos" textFill="#f5f2f2">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+                      <graphic>
+                          <FontIcon iconLiteral="fas-clipboard-list" iconColor="white"/>
+                      </graphic>
+               </Button>
+               <Button maxWidth="Infinity"  prefHeight="43.0" prefWidth="219.0" style="-fx-background-color: #2C3E50;" text="Productos" textFill="#f5f2f2">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+                   <graphic>
+                       <FontIcon iconLiteral="fas-box-open" iconColor="white"/>
+                   </graphic>
+               </Button>
+               <Button maxWidth="Infinity" prefHeight="43.0" prefWidth="219.0" style="-fx-background-color: #2C3E50;" text="Clientes" textFill="#f5f2f2">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+                   <graphic>
+                       <FontIcon iconLiteral="fas-users" iconColor="white"/>
+                   </graphic>
+               </Button>
+            </children></VBox>
+         <Separator prefWidth="200.0" />
+
+                  <Button fx:id="btnSalir" maxWidth="Infinity"  prefHeight="61.0" prefWidth="219.0" style="-fx-background-color: #2C3E50; -fx-text-fill: white;" text="Salir"
+                  styleClass="sidebar-button">
+            <font>
+               <Font size="18.0" />
+            </font>
+                      <graphic>
+                          <FontIcon iconLiteral="fas-sign-out-alt" iconColor="white"/>
+                      </graphic>
+         </Button>
+        </VBox>
+    </left>
+    <center>
+        <StackPane fx:id="contenedorPrincipal"
+        ></StackPane>
+    </center>
+
+</BorderPane>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="623.0" prefWidth="1032.0" style="-fx-padding: 12;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tienda.controladores.DashboardController">
+   <children>
+      <Label prefHeight="23.0" prefWidth="146.0" text="Dashboard">
+         <font>
+            <Font name="Arial" size="20.0" />
+         </font>
+      </Label>
+      <Separator layoutX="12.0" layoutY="-62.0" prefHeight="85.0" prefWidth="625.0" />
+      <HBox layoutX="23.0" layoutY="33.0" prefHeight="100.0" prefWidth="983.0">
+         <children>
+            <AnchorPane prefHeight="100.0" prefWidth="139.0" style="-fx-border-radius: 12; -fx-background-radius: black; -fx-border-width: 12;">
+               <children>
+                  <Label layoutX="42.0" layoutY="42.0" text="S/" />
+                  <Label layoutX="52.0" layoutY="4.0" text="Ventas de Hoy">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblVentas" layoutX="69.0" layoutY="42.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="100.0" prefWidth="139.0">
+               <children>
+                  <Label layoutX="52.0" layoutY="4.0" text="Pedidos">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblPedidos" layoutX="69.0" layoutY="42.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="100.0" prefWidth="139.0">
+               <children>
+                  <Label layoutX="52.0" layoutY="4.0" text="Clientes">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblClientes" layoutX="69.0" layoutY="42.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="100.0" prefWidth="139.0">
+               <children>
+                  <Label layoutX="52.0" layoutY="4.0" text="Productos">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblProductos" layoutX="69.0" layoutY="42.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <AnchorPane layoutX="46.0" layoutY="240.0" prefHeight="358.0" prefWidth="958.0">
+         <children>
+            <VBox layoutX="14.0" layoutY="97.0" prefHeight="287.0" prefWidth="448.0" style="-fx-border-color: gray; -fx-border-radius: 12; -fx-padding: 12;">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="220.0" text="Productos con bajo Stock">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tblProductos" prefHeight="237.0" prefWidth="422.0" style="-fx-border-radius: 12;">
+                    <columns>
+                      <TableColumn fx:id="colIdProducto" prefWidth="75.0" text="Id" />
+                      <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
+                        <TableColumn fx:id="colPrecio" prefWidth="75.0" text="Precio" />
+                        <TableColumn fx:id="colStock" prefWidth="75.0" text="Stock" />
+                    </columns>
+                  </TableView>
+               </children>
+            </VBox>
+            <VBox layoutX="479.0" layoutY="97.0" prefHeight="287.0" prefWidth="458.0" style="-fx-border-color: gray; -fx-border-radius: 12; -fx-padding: 12;">
+               <children>
+                  <Label prefHeight="25.0" prefWidth="156.0" text="Ultimas Ventas">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="tblVentas" prefHeight="233.0" prefWidth="432.0">
+                     <columns>
+                        <TableColumn fx:id="colId" prefWidth="75.0" text="Id" />
+                        <TableColumn fx:id="colCliente" prefWidth="75.0" text="Cliente" />
+                        <TableColumn fx:id="colFecha" prefWidth="75.0" text="Fecha" />
+                        <TableColumn fx:id="colTotal" prefWidth="75.0" text="Total" />
+                     </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
