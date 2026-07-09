@@ -34,14 +34,20 @@ public class MenuController {
 
 
 
-            if( admin.validarPassword("admin123","angelo")){
-
+            if( admin.validarPassword(password,correo)){
+                //Para simular
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+                alerta.setTitle("Felicidades");
+                alerta.setContentText("Usuari valiado");
+                alerta.showAndWait();
             }else{
                 Alert alerta = new Alert(Alert.AlertType.ERROR);
                 alerta.setTitle("Error de acceso");
                 alerta.setHeaderText("Credenciales incorrectas");
                 alerta.setContentText("El usuario o contraseña son inválidas");
                 alerta.showAndWait();
+                txtCorreo.clear();
+                psfPassword.clear();
             }
         });
     }
