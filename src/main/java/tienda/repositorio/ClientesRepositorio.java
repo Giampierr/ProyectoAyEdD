@@ -4,6 +4,7 @@ import tienda.modelo.Cliente;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ClientesRepositorio   {
@@ -27,6 +28,9 @@ public class ClientesRepositorio   {
         clientePorDni.put(misClientes.getDni(),misClientes);
     }
 
+    public List<Cliente> devolverClientes(){
+        return clientes;
+    }
     public String busquedaLinea(String nombreBuscado) {
         for (Cliente cliente : clientes) {
             if (cliente.getNombre().equalsIgnoreCase(nombreBuscado)) {

@@ -1,17 +1,18 @@
 package tienda.controladores;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.scene.control.PasswordField;
 import javafx.scene.layout.*;
-import tienda.modelo.Admin;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import static tienda.AppContext.admin;
 
-import java.awt.*;
-import java.util.Locale;
 
 public class MenuController {
-    Admin admin = new Admin("admin123","angelo");
     @FXML
     private BorderPane rootPane;
 
@@ -32,14 +33,26 @@ public class MenuController {
             String correo = txtCorreo.getText().toLowerCase().trim();
             String password =psfPassword.getText();
 
-
-
-            if( admin.validarPassword(password,correo)){
-                //Para simular
-                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
-                alerta.setTitle("Felicidades");
-                alerta.setContentText("Usuari valiado");
+            if (correo.isEmpty() || password.isEmpty()){
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("Error de acceso");
+                alerta.setHeaderText("Rellene ambos campos");
                 alerta.showAndWait();
+            }
+            else if( admin.validarPassword(password,correo)){
+
+                try{
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/administrador.fxml"));
+
+                    Parent root = loader.load();
+
+                    Stage stage = (Stage) btnAdmin.getScene().getWindow();
+
+                    stage.setScene(new Scene(root));
+                    stage.show();
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }else{
                 Alert alerta = new Alert(Alert.AlertType.ERROR);
                 alerta.setTitle("Error de acceso");

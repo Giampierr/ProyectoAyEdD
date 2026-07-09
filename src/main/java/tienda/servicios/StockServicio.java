@@ -4,6 +4,9 @@ import tienda.interfaces.AlertarBajoStock;
 import tienda.modelo.Producto;
 import tienda.repositorio.ProductosRepositorio ;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StockServicio implements Actualizar, AlertarBajoStock {
     private ProductosRepositorio repo;
 
@@ -24,6 +27,8 @@ public class StockServicio implements Actualizar, AlertarBajoStock {
 
     @Override
     public String alertar() {
+
+
         StringBuilder miBuilder = new StringBuilder();
         for (Producto producto:repo.listar()){
             if (producto.getStock() <10){
@@ -35,5 +40,17 @@ public class StockServicio implements Actualizar, AlertarBajoStock {
             }
         }
         return miBuilder.toString();
+    }
+
+    public List<Producto> devolverAlerta(){
+        List<Producto> productoConBajoStock = new ArrayList<>();
+
+        for (Producto forProducto : repo.listar()){
+            if (forProducto.getStock() < 10){
+                productoConBajoStock.add(forProducto);
+            }
+        }
+
+        return productoConBajoStock;
     }
 }

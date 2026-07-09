@@ -31,8 +31,20 @@ public abstract class Venta {
         return id;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public LocalDateTime getFecha() {
+        return fecha;
+    }
+
     public ArrayList<Item> getListaItems() {
         return listaItems;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
     }
 
     public double obtenerValorTotal()

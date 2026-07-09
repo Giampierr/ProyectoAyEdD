@@ -3,9 +3,11 @@ package tienda;
 import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
 
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import tienda.base.Venta;
+import tienda.controladores.AdministradorController;
 import tienda.modelo.Admin;
 import tienda.modelo.VentaDirecta;
 import tienda.modelo.VentaPedido;
@@ -26,6 +28,15 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        AppContext.admin = new Admin("admin123","angelo");
+        AppContext.repoVentas = new RepositorioVentas();
+        AppContext.repoPedidos = new RepositorioPedidos();
+        AppContext.repoClientes = new ClientesRepositorio();
+        AppContext.repoProductos = new ProductosRepositorio();
+        AppContext.ordenadorServicio = new OrdenadorServicio(AppContext.repoProductos);
+        AppContext.stockServicio = new StockServicio(AppContext.repoProductos);
+        AppContext.ventaServicio = new VentaServicio(AppContext.repoProductos,AppContext.repoPedidos,AppContext.repoVentas);
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/inicio.fxml"));
 
         Scene scene = new Scene(loader.load());
@@ -34,23 +45,6 @@ public class Main extends Application{
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        Admin admin = new Admin("admin123","angelo");
-        ProductosRepositorio miRepoProductos = new ProductosRepositorio();
-        ClientesRepositorio miRepoClientes = new ClientesRepositorio();
-        RepositorioVentas miRepoVentas = new RepositorioVentas();
-        RepositorioPedidos miRepoPedidos = new RepositorioPedidos();
-
-        OrdenadorServicio ordenadorServicio = new OrdenadorServicio(miRepoProductos);
-        StockServicio stockServicio = new StockServicio(miRepoProductos);
-        VentaServicio ventaServicio = new VentaServicio(miRepoProductos,miRepoPedidos,miRepoVentas);
-
-
-        MenuAdministrador menuAdministrador = new MenuAdministrador(admin,miRepoProductos,ordenadorServicio,stockServicio,miRepoVentas,miRepoPedidos,ventaServicio);
-        MenuVenta menuVenta = new MenuVenta(miRepoClientes,miRepoProductos,ventaServicio);
-        MenuPrincipal menuPrincipal = new MenuPrincipal(menuAdministrador,menuVenta);
-
-        //Asi no inicia
-        //menuPrincipal.iniciar();
 
 
     }

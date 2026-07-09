@@ -1,23 +1,34 @@
 package tienda.repositorio;
 
+import tienda.AppContext;
 import tienda.base.Venta;
 import tienda.interfaces.RepositorioGenerico;
+import tienda.modelo.Cliente;
+import tienda.modelo.Item;
+import tienda.modelo.Producto;
 import tienda.modelo.VentaDirecta;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import static tienda.Factory.VentaFactory.crearVenta;
 
 public class RepositorioVentas implements RepositorioGenerico<Venta> {
-    ArrayList<Venta> listaVentaDirecta = new ArrayList<>();
-    HashMap <Integer, Venta> hashVentaDirecta = new HashMap<>();
+    private ArrayList<Venta> listaVentaDirecta = new ArrayList<>();
+    private HashMap <Integer, Venta> hashVentaDirecta = new HashMap<>();
+
 
     public RepositorioVentas() {
         cargarDatosIniciales();
     }
 
     public void cargarDatosIniciales(){
+        Producto p = new Producto("Mouse",300,10);
+        Item item = new Item(p,1);
+        ArrayList<Item> arrayList = new ArrayList<>();
+        arrayList.add(item);
+        agregar(new VentaDirecta(new Cliente("angelo","7709774","angelo@email.com","967458926"),arrayList));
     }
 
     @Override
@@ -62,5 +73,8 @@ public class RepositorioVentas implements RepositorioGenerico<Venta> {
         return miBuilder.toString();
     }
 
+    public List<Venta> devolverVentas(){
+        return listaVentaDirecta;
+    }
 
 }
