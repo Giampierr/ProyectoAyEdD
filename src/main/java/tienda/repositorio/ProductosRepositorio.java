@@ -4,6 +4,7 @@ import tienda.estructuras.ListaEnlazadaProductos;
 import tienda.interfaces.Actualizar;
 import tienda.modelo.Producto;
 import tienda.interfaces.AlertarBajoStock;
+import tienda.modelo.TipoCategoria;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,16 +25,16 @@ public class ProductosRepositorio  {
 
     private void cargarDatosIniciales() {
         //Aqui se cargan los  datos (100 productos)
-        guardar(new Producto("Laptop", 2500.0, 5));
-        guardar(new Producto("Laptop Gamer", 4200.0, 3));
-        guardar(new Producto("RAM 8GB", 120.0, 15));
-        guardar(new Producto("RAM 16GB", 250.0, 7));
-        guardar(new Producto("SSD 500GB", 180.0, 10));
-        guardar(new Producto("SSD 1TB", 300.0, 8));
-        guardar(new Producto("Procesador Ryzen 5", 900.0, 6));
-        guardar(new Producto("Procesador Intel i7", 1200.0, 4));
-        guardar(new Producto("Tarjeta Gráfica RTX 4060", 1800.0, 2));
-        guardar(new Producto("Tarjeta Gráfica RTX 4080", 3500.0, 1));
+        guardar(new Producto("Laptop", TipoCategoria.LAPTOP,2500.0, 5));
+        guardar(new Producto("Laptop Gamer", TipoCategoria.LAPTOP,4200.0, 3));
+        guardar(new Producto("RAM 8GB",TipoCategoria.RAM, 120.0, 15));
+        guardar(new Producto("RAM 16GB", TipoCategoria.RAM,250.0, 7));
+        guardar(new Producto("SSD 500GB", TipoCategoria.ALMACENAMIENTO,180.0, 10));
+        guardar(new Producto("SSD 1TB", TipoCategoria.ALMACENAMIENTO,300.0, 8));
+        guardar(new Producto("Procesador Ryzen 5", TipoCategoria.PROCESADOR,900.0, 6));
+        guardar(new Producto("Procesador Intel i7", TipoCategoria.PROCESADOR,1200.0, 4));
+        guardar(new Producto("Tarjeta Gráfica RTX 4060", TipoCategoria.GRAFICA,1800.0, 2));
+        guardar(new Producto("Tarjeta Gráfica RTX 4080", TipoCategoria.GRAFICA,3500.0, 1));
     }
 
 

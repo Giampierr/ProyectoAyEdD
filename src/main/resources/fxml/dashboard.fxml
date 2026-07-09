@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
@@ -145,5 +149,30 @@
             </VBox>
          </children>
       </AnchorPane>
+      <HBox layoutX="125.0" layoutY="170.0" prefHeight="209.0" prefWidth="780.0" spacing="250.0">
+         <children>
+            <VBox prefHeight="209.0" prefWidth="353.0" style="-fx-padding: 10; -fx-border-color: gray; -fx-border-radius: 12;">
+               <children>
+                  <Label text="Venta de los ultimos 7 días" />
+                  <LineChart fx:id="lineVentas">
+                    <xAxis>
+                      <CategoryAxis fx:id="xAxis" side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis fx:id="yAxis" side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-padding: 10; -fx-border-radius: 12; -fx-border-color: gray;">
+               <children>
+                  <Label text="Ventas por categoría" />
+                  <PieChart fx:id="pieCategorias" prefHeight="170.0" prefWidth="237.0">
+
+                  </PieChart>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

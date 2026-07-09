@@ -1,6 +1,8 @@
 package tienda.controladores;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -8,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import tienda.base.Venta;
 import tienda.modelo.Cliente;
 import tienda.modelo.Producto;
+import tienda.modelo.TipoCategoria;
 import tienda.repositorio.ClientesRepositorio;
 import tienda.repositorio.ProductosRepositorio;
 import tienda.repositorio.RepositorioPedidos;
@@ -17,6 +20,7 @@ import tienda.servicios.StockServicio;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 
 public class DashboardController {
     private RepositorioVentas miRepoVentas;
@@ -58,8 +62,58 @@ public class DashboardController {
     private TableColumn<Venta,Double> colTotal;
 
     @FXML
-    public void initialize() {
+    private LineChart<String,Number> lineVentas;
+    @FXML
+    private CategoryAxis xAxis;
+    @FXML
+    private NumberAxis yAxis;
 
+
+
+    public void cargarGraficoVentas() {
+
+        lineVentas.getData().clear();
+
+        XYChart.Series<String, Number> serie =
+                new XYChart.Series<>();
+
+        serie.setName("Ventas");
+
+        Map<String, Double> ventas =
+                AppContext.repoVentas.ventasPorDia();
+
+        ventas.forEach((dia, total) -> {
+            serie.getData().add(
+                    new XYChart.Data<>(dia, total)
+            );
+        });
+
+        lineVentas.getData().add(serie);
+
+        xAxis.setTickLabelRotation(0);
+    }
+
+    @FXML
+    private PieChart pieCategorias;
+
+    public void cargarPieChart(){
+        ObservableList<PieChart.Data> datos = FXCollections.observableArrayList(
+        );
+        Map<TipoCategoria,Integer> categorias = AppContext.repoVentas.ventasPorCategoria();
+
+        categorias.forEach((categoria,cantidad) ->{
+            datos.add(
+                    new PieChart.Data(categoria.toString(),cantidad)
+            );
+        });
+
+        pieCategorias.setData(datos);
+    }
+
+    @FXML
+    public void initialize() {
+        cargarGraficoVentas();
+        cargarPieChart();
         double totalVenta = 0;
 
         for(Venta venta : AppContext.repoVentas.devolverVentas()){

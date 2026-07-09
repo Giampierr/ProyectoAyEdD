@@ -3,14 +3,13 @@ package tienda.repositorio;
 import tienda.AppContext;
 import tienda.base.Venta;
 import tienda.interfaces.RepositorioGenerico;
-import tienda.modelo.Cliente;
-import tienda.modelo.Item;
-import tienda.modelo.Producto;
-import tienda.modelo.VentaDirecta;
+import tienda.modelo.*;
 
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static tienda.Factory.VentaFactory.crearVenta;
 
@@ -24,7 +23,7 @@ public class RepositorioVentas implements RepositorioGenerico<Venta> {
     }
 
     public void cargarDatosIniciales(){
-        Producto p = new Producto("Mouse",300,10);
+        Producto p = new Producto("Mouse", TipoCategoria.MOUSE,300,10);
         Item item = new Item(p,1);
         ArrayList<Item> arrayList = new ArrayList<>();
         arrayList.add(item);
@@ -77,4 +76,38 @@ public class RepositorioVentas implements RepositorioGenerico<Venta> {
         return listaVentaDirecta;
     }
 
+    public Map<TipoCategoria,Integer> ventasPorCategoria(){
+        Map<TipoCategoria,Integer> ventasCategoria = new HashMap<>();
+        for (Venta venta : listaVentaDirecta) {
+            for (Item item : venta.getListaItems()){
+                TipoCategoria categoria = item.getProducto().getTipo();
+
+                ventasCategoria.put(categoria,ventasCategoria.getOrDefault(categoria,0)+ item.getCantidad());
+            }
+        }
+         return ventasCategoria;
+    }
+
+    public Map<String,Double> ventasPorDia(){
+        Map<String,Double> ventasDia = new HashMap<>();
+
+        for (Venta venta : listaVentaDirecta) {
+            DayOfWeek dia = venta.getFecha().toLocalDate().getDayOfWeek();
+
+            String nombreDia = switch (dia){
+                case MONDAY -> "Lun";
+                case TUESDAY -> "Mar";
+                case WEDNESDAY -> "Mie";
+                case THURSDAY -> "Jue";
+                case FRIDAY -> "Vie";
+                case SUNDAY -> "Sab";
+                case SATURDAY -> "Dom";
+            };
+
+
+
+            ventasDia.put(nombreDia,ventasDia.getOrDefault(nombreDia,0.0)+venta.getValorTotal() );
+        }
+        return ventasDia;
+    }
 }

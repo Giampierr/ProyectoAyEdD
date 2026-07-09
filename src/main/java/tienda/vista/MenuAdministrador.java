@@ -2,6 +2,7 @@ package tienda.vista;
 
 import tienda.modelo.Admin;
 import tienda.modelo.Producto;
+import tienda.modelo.TipoCategoria;
 import tienda.repositorio.ProductosRepositorio;
 import tienda.repositorio.RepositorioPedidos;
 import tienda.repositorio.RepositorioVentas;
@@ -87,7 +88,7 @@ public class MenuAdministrador {
                                     System.out.print("Precio: ");
                                     precio = miScanner.nextDouble();
                                     miScanner.nextLine();
-                                    Producto producto = new Producto(nombre, precio, stock);
+                                    Producto producto = new Producto(nombre, TipoCategoria.OTROS,precio, stock);
                                     miInventario.guardar(producto);
                                     System.out.println("Producto guardado.");
                                 }
