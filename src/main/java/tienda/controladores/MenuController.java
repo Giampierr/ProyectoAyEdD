@@ -34,9 +34,9 @@ public class MenuController {
             String password =psfPassword.getText();
 
             if (correo.isEmpty() || password.isEmpty()){
-                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                Alert alerta = new Alert(Alert.AlertType.WARNING);
                 alerta.setTitle("Error de acceso");
-                alerta.setHeaderText("Rellene ambos campos");
+                alerta.setContentText("Rellene ambos campos");
                 alerta.showAndWait();
             }
             else if( admin.validarPassword(password,correo)){
@@ -56,7 +56,6 @@ public class MenuController {
             }else{
                 Alert alerta = new Alert(Alert.AlertType.ERROR);
                 alerta.setTitle("Error de acceso");
-                alerta.setHeaderText("Credenciales incorrectas");
                 alerta.setContentText("El usuario o contraseña son inválidas");
                 alerta.showAndWait();
                 txtCorreo.clear();

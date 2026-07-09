@@ -1,0 +1,23 @@
+.dashboard-icon-sales {
+    -fx-background-color: #E8F0FE;
+    -fx-background-radius: 12;
+    -fx-padding: 12;
+}
+
+.dashboard-icon-orders {
+    -fx-background-color: #E8F5E9;
+    -fx-background-radius: 12;
+    -fx-padding: 12;
+}
+
+.dashboard-icon-clients {
+    -fx-background-color: #FFF3E0;
+    -fx-background-radius: 12;
+    -fx-padding: 12;
+}
+
+.dashboard-icon-products {
+    -fx-background-color: #F3E5F5;
+    -fx-background-radius: 12;
+    -fx-padding: 12;
+}

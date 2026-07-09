@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tienda.controladores.AdministradorController">
+<BorderPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tienda.controladores.AdministradorController">
 
     <!-- Sidebar -->
     <left>
@@ -24,39 +24,37 @@
 
             <VBox prefHeight="544.0" prefWidth="264.0" style="-fx-padding: 0;" VBox.vgrow="ALWAYS">
             <children>
-                <Button maxWidth="Infinity"  prefHeight="43.0" prefWidth="219.0" style="-fx-background-color: #2C3E50;" text="DashBoard" textFill="#f5f2f2" onAction="#mostrarDashboard">
+                <Button maxWidth="Infinity" onAction="#mostrarDashboard" prefHeight="43.0" prefWidth="219.0" style="-fx-background-color: #2C3E50;" text="DashBoard" textFill="#f5f2f2">
                     <font>
                         <Font size="18.0" />
                     </font>
                     <graphic>
-                        <FontIcon iconLiteral="fas-home"
-                                  iconColor="white"/>
+                        <FontIcon iconColor="white" iconLiteral="fas-home" />
                     </graphic>
                 </Button>
-               <Button maxWidth="Infinity"  prefHeight="43.0" prefWidth="219.0" style="-fx-background-color: #2C3E50;" text="Ventas" textFill="#f5f2f2">
+               <Button maxWidth="Infinity" prefHeight="43.0" prefWidth="219.0" style="-fx-background-color: #2C3E50;" text="Ventas" textFill="#f5f2f2">
                   <font>
                      <Font size="18.0" />
                   </font>
                    <graphic>
-                       <FontIcon iconLiteral="fas-chart-bar"
-                       iconColor="white"/>
+                       <FontIcon iconColor="white" iconLiteral="fas-chart-bar" />
                    </graphic>
                </Button>
 
-                  <Button maxWidth="Infinity"  prefHeight="43.0" prefWidth="219.0" style="-fx-background-color: #2C3E50;" text="Pedidos" textFill="#f5f2f2">
+                  <Button maxWidth="Infinity" prefHeight="43.0" prefWidth="219.0" style="-fx-background-color: #2C3E50;" text="Pedidos" textFill="#f5f2f2">
                   <font>
                      <Font size="18.0" />
                   </font>
                       <graphic>
-                          <FontIcon iconLiteral="fas-clipboard-list" iconColor="white"/>
+                          <FontIcon iconColor="white" iconLiteral="fas-clipboard-list" />
                       </graphic>
                </Button>
-               <Button maxWidth="Infinity"  prefHeight="43.0" prefWidth="219.0" style="-fx-background-color: #2C3E50;" text="Productos" textFill="#f5f2f2">
+               <Button maxWidth="Infinity" prefHeight="43.0" prefWidth="219.0" style="-fx-background-color: #2C3E50;" text="Productos" textFill="#f5f2f2">
                   <font>
                      <Font size="18.0" />
                   </font>
                    <graphic>
-                       <FontIcon iconLiteral="fas-box-open" iconColor="white"/>
+                       <FontIcon iconColor="white" iconLiteral="fas-box-open" />
                    </graphic>
                </Button>
                <Button maxWidth="Infinity" prefHeight="43.0" prefWidth="219.0" style="-fx-background-color: #2C3E50;" text="Clientes" textFill="#f5f2f2">
@@ -64,26 +62,24 @@
                      <Font size="18.0" />
                   </font>
                    <graphic>
-                       <FontIcon iconLiteral="fas-users" iconColor="white"/>
+                       <FontIcon iconColor="white" iconLiteral="fas-users" />
                    </graphic>
                </Button>
             </children></VBox>
          <Separator prefWidth="200.0" />
 
-                  <Button fx:id="btnSalir" maxWidth="Infinity"  prefHeight="61.0" prefWidth="219.0" style="-fx-background-color: #2C3E50; -fx-text-fill: white;" text="Salir"
-                  styleClass="sidebar-button">
+                  <Button fx:id="btnSalir" maxWidth="Infinity" prefHeight="61.0" prefWidth="219.0" style="-fx-background-color: #2C3E50; -fx-text-fill: white;" styleClass="sidebar-button" text="Salir">
             <font>
                <Font size="18.0" />
             </font>
                       <graphic>
-                          <FontIcon iconLiteral="fas-sign-out-alt" iconColor="white"/>
+                          <FontIcon iconColor="white" iconLiteral="fas-sign-out-alt" />
                       </graphic>
          </Button>
         </VBox>
     </left>
     <center>
-        <StackPane fx:id="contenedorPrincipal"
-        ></StackPane>
+        <StackPane fx:id="contenedorPrincipal" />
     </center>
 
 </BorderPane>
