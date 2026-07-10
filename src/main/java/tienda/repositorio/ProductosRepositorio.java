@@ -86,6 +86,18 @@ public class ProductosRepositorio  {
         }
         return null;
     }
+
+    public ArrayList<Producto> buscarPorNombre(String criterio){
+        ArrayList<Producto> productos = new ArrayList<>();
+
+        for (Producto producto : listaProductos) {
+            if (producto.getNombre().toLowerCase().contains(criterio)) {
+                productos.add(producto);
+            }
+        }
+
+        return productos;
+    }
     //Se renovo(Ya no es lineal ahora es más rapida O(1))
     public String busquedaId(int Id){
 

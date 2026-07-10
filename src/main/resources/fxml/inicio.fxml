@@ -46,7 +46,7 @@
 
                     <Label styleClass="card-description" text="Realiza ventas, registra productos&#10;y gestiona el carrito." textFill="#f8f4f4" wrapText="true" />
 
-                    <Button styleClass="btn-venta" stylesheets="@../css/estilos.css" text="Ir a Ventas" />
+                    <Button fx:id="btnVenta" styleClass="btn-venta" stylesheets="@../css/estilos.css" text="Ir a Ventas" />
                 </VBox>
 
                 <!-- Panel Administración -->

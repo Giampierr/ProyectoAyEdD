@@ -11,6 +11,7 @@ import tienda.repositorio.RepositorioVentas;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class VentaServicio  {
@@ -96,6 +97,15 @@ public class VentaServicio  {
         }
     }
 
+    public double calcularSubtotal(){
+        double subtotal = 0;
+
+        for (Item item : devolver()){
+            subtotal += item.getSubtotal();
+        }
+
+        return subtotal;
+    }
     public void vaciarCarrito(){
         listaItems.clear();
         hashItem.clear();
@@ -193,5 +203,9 @@ public class VentaServicio  {
         pedido.setEstado(EstadoPedido.RECHAZADO);
 
         return pedido.mostrarResumen();
+    }
+
+    public List<Item> devolver(){
+        return listaItems;
     }
 }

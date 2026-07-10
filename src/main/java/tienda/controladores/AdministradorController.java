@@ -6,25 +6,17 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
-import tienda.repositorio.ClientesRepositorio;
-import tienda.repositorio.ProductosRepositorio;
-import tienda.repositorio.RepositorioPedidos;
-import tienda.repositorio.RepositorioVentas;
-
 import java.awt.*;
 import java.io.IOException;
 
 public class AdministradorController {
-    private RepositorioVentas repoVentas;
-    private RepositorioPedidos repoPedidos;
-    private ClientesRepositorio repoClientes;
-    private ProductosRepositorio repoProductos;
+
 
     @FXML
     private Button btnSalir;
     @FXML
     private StackPane contenedorPrincipal;
-
+    //Falta agregar los demas botones
     private void cargarVista(String fxml){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));

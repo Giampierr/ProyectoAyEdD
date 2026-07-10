@@ -25,6 +25,8 @@ public class MenuController {
     @FXML
     private Button btnAdmin;
 
+    @FXML
+    private Button btnVenta;
 
     @FXML
     public void initialize() {
@@ -60,6 +62,22 @@ public class MenuController {
                 alerta.showAndWait();
                 txtCorreo.clear();
                 psfPassword.clear();
+            }
+        });
+
+        btnVenta.setOnAction(event -> {
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/venta.fxml"));
+
+                Parent root = loader.load();
+
+                Stage stage = (Stage) btnVenta.getScene().getWindow();
+
+                stage.setScene(new Scene(root));
+                stage.show();
+
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
         });
     }

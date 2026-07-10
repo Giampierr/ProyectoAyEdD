@@ -1,0 +1,159 @@
+.root {
+    -fx-background-color: #f5f7fb;
+    -fx-font-family: "Segoe UI";
+}
+
+/* Tarjetas */
+
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #e5e7eb;
+    -fx-padding: 15;
+}
+
+/* Titulo principal */
+
+.title-label {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1f2937;
+}
+
+.subtitle-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #6b7280;
+}
+
+/* TextField */
+
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.text-field:focused {
+    -fx-border-color: #3b82f6;
+}
+
+/* ChoiceBox */
+
+.choice-box {
+    -fx-background-color: white;
+    -fx-border-color: #d1d5db;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+/* Tabla */
+
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+    -fx-background-radius: 10;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #eef2f7;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #374151;
+}
+
+.table-row-cell {
+    -fx-background-color: white;
+}
+
+.table-row-cell:filled:selected {
+    -fx-background-color: #dbeafe;
+}
+
+/* Botón agregar */
+
+.btn-add {
+    -fx-background-color: white;
+    -fx-border-color: #3b82f6;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-text-fill: #3b82f6;
+}
+
+.btn-add:hover {
+    -fx-background-color: #eff6ff;
+}
+/*Boton remover*/
+.btn-remove {
+    -fx-background-color: transparent;
+    -fx-text-fill: #6b7280;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.btn-remove:hover {
+    -fx-text-fill: #ef4444;
+}
+
+/* Botón azul */
+
+.btn-primary {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+/* Botón rojo */
+
+.btn-danger {
+    -fx-background-color: white;
+    -fx-text-fill: #ef4444;
+    -fx-border-color: #ef4444;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+
+.btn-danger:hover {
+    -fx-background-color: #fef2f2;
+}
+
+/* Totales */
+
+.total-label {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.section-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+.icon-primary {
+    -fx-icon-color: #2563eb;
+}
+
+.icon-danger {
+    -fx-icon-color: #ef4444;
+}
+
+.icon-success {
+    -fx-icon-color: #22c55e;
+}
+
+.icon-light {
+    -fx-icon-color: white;
+}

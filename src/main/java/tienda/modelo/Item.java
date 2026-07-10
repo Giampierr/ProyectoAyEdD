@@ -30,6 +30,10 @@ public class Item {
     public int obtenerStock(){
         return producto.getStock();
     }
+
+    public double getSubtotal(){
+        return calcularSubtotal();
+    }
     public double calcularSubtotal(){
         return producto.getPrecio()*cantidad;
     }
