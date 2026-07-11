@@ -46,6 +46,7 @@
                                  <FontIcon iconLiteral="fas-search" />
                              </graphic>
                          </Button>
+                        <Button fx:id="btnLimpiar" mnemonicParsing="false" prefHeight="39.0" prefWidth="148.0" styleClass="btn-order" text="Limpiar" />
                      </children>
                   </HBox>
                </children>
@@ -119,8 +120,8 @@
                <children>
                   <AnchorPane prefHeight="96.0" prefWidth="365.0">
                      <children>
-                        <Label layoutX="148.0" layoutY="32.0" text="Monto total :" />
-                        <Label fx:id="lblTotal2" layoutX="169.0" layoutY="40.0" styleClass="total-price" />
+                        <Label layoutX="148.0" layoutY="14.0" text="Monto total :" />
+                        <Label fx:id="lblTotal2" layoutX="86.0" layoutY="31.0" prefHeight="45.0" prefWidth="199.0" styleClass="total-price" />
                      </children>
                   </AnchorPane>
                </children>
@@ -139,5 +140,6 @@
                <FontIcon iconLiteral="fas-clipboard-list" styleClass="icon-white" />
            </graphic>
        </Button>
+      <Button fx:id="btnCancelar" layoutX="688.0" layoutY="29.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="190.0" styleClass="btn-danger" text="Cancelar" />
    </children>
 </AnchorPane>

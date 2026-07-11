@@ -221,6 +221,15 @@ public class VentaController {
 
         //Boton Procesar
         btnPagar.setOnAction(event -> {
+
+            if (AppContext.ventaServicio.devolver().isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Carrito Vacío");
+                alert.setContentText("El carrito esta vacío");
+                alert.showAndWait();
+                return;
+            }
+
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/pago.fxml"));
 

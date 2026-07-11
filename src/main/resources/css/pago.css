@@ -97,6 +97,13 @@
     -fx-border-color:#dde3ee;
 
 }
+.btn-danger {
+    -fx-background-color: white;
+    -fx-text-fill: #ef4444;
+    -fx-border-color: #ef4444;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
 .btn-buy{
 
     -fx-background-color:#123b74;

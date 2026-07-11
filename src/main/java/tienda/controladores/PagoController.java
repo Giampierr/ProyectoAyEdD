@@ -20,6 +20,10 @@ public class PagoController {
     @FXML
     private Button btnBuscar;
     @FXML
+    private Button btnLimpiar;
+    @FXML
+    private Button btnCancelar;
+    @FXML
     private Label lblNombres;
     @FXML
     private Label lblDni;
@@ -72,7 +76,7 @@ public class PagoController {
             if(clienteSeleccionado == null){
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setHeaderText(null);
-                alert.setContentText("Debe seleccionar un cliente");
+                alert.setContentText("Cliente no encontrado");
                 alert.showAndWait();
                 return;
             }
@@ -99,9 +103,40 @@ public class PagoController {
         lblTotal.setText(String.format("S/. %.2f",subtotal));
         lblTotal2.setText(String.format("S/. %.2f",subtotal));
 
+        //Boton Limpiar
+        btnLimpiar.setOnAction(event -> {
+            limpiarCampos();
+            txtCliente.clear();
+            clienteSeleccionado = null;
+        });
+
+        //Boton Cancelar
+        btnCancelar.setOnAction(event -> {
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/venta.fxml"));
+
+                Parent root = loader.load();
+
+                Stage stage = (Stage) btnComprar.getScene().getWindow();
+
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
+
 
         //Comprar
         btnComprar.setOnAction(event -> {
+            if (clienteSeleccionado == null){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Cliente inválido");
+                alert.setContentText("Debe seleccionar un cliente");
+                alert.showAndWait();
+                return;
+            }
+
             AppContext.ventaServicio.procesarVenta(clienteSeleccionado);
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/venta.fxml"));
@@ -119,6 +154,13 @@ public class PagoController {
 
         //Pedido
         btnPedido.setOnAction(event -> {
+            if (clienteSeleccionado == null){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Cliente inválido");
+                alert.setContentText("Debe seleccionar un cliente");
+                alert.showAndWait();
+                return;
+            }
             AppContext.ventaServicio.procesarPedido(clienteSeleccionado);
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/venta.fxml"));
