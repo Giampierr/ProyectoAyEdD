@@ -18,7 +18,7 @@ public class ClientesRepositorio   {
         //Aqui se cargan los  datos (100 clientes)
 
         guardar(new Cliente("Juan Perez", "12345678", "juan@gmail.com", "987654321"));
-        guardar(new Cliente("Maria Lopez", "87654321", "maria@gmail.com", "912345678"));
+        guardar(new Cliente("Maria Lopez", "", "maria@gmail.com", "912345678"));
         guardar(new Cliente("Carlos Ramos", "45678912", "carlos@gmail.com", "999888777"));
         guardar(new Cliente("Ana Torres", "74125896", "ana@gmail.com", "955444333"));
         guardar(new Cliente("Luis Diaz", "36925814", "luis@gmail.com", "900111222"));

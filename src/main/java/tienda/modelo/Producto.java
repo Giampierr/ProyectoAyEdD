@@ -45,6 +45,10 @@ public class Producto implements MostrarInformación {
         return tipo;
     }
 
+    public void setTipo(TipoCategoria tipo) {
+        this.tipo = tipo;
+    }
+
     public double getPrecio() {
         return precio;
     }

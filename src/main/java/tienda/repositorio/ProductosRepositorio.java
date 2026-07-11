@@ -60,6 +60,13 @@ public class ProductosRepositorio  {
         arbol.insertar(misProducto);
     }
 
+    public void eliminar(int id){
+        hashProductos.remove(id);
+        listaProductos.removeIf(
+                producto -> producto.getId() == id
+        );
+    }
+
     public String listarProductos() {
         StringBuilder sb = new StringBuilder();
         for (Producto producto : listaProductos) {
@@ -109,6 +116,7 @@ public class ProductosRepositorio  {
             return "No se encontro el producto";
         }
     }
+
     public Producto buscarPorId(int id) {
         return hashProductos.get(id);
     }
@@ -143,4 +151,20 @@ public class ProductosRepositorio  {
             return "Stock inválido";
         }
     }
+
+
+    public Map<TipoCategoria,Integer> productosPorCategorias(){
+        Map<TipoCategoria,Integer> productos = new HashMap<>();
+
+        for (Producto producto : listaProductos){
+            TipoCategoria categoria = producto.getTipo();
+
+            productos.put(
+                    categoria,productos.getOrDefault(categoria,0)+1
+            );
+        }
+
+        return productos;
+    }
+
 }

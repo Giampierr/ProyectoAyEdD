@@ -1,0 +1,171 @@
+.root-pane{
+    -fx-background-color: #f5f7fb;
+}
+
+/* =======================
+   TITULOS
+   ======================= */
+
+.label{
+    -fx-text-fill: #374151;
+}
+
+.card-title{
+    -fx-font-size: 13px;
+    -fx-text-fill: #6b7280;
+}
+
+.card-value{
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111827;
+}
+
+/* =======================
+   TARJETAS
+   ======================= */
+
+.metric-card{
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+
+    -fx-effect: dropshadow(
+            gaussian,
+            rgba(0,0,0,0.08),
+            15,
+            0,
+            0,
+            2
+    );
+
+    -fx-padding: 15;
+}
+
+/* =======================
+   BUSCADOR
+   ======================= */
+
+.label-container{
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #e5e7eb;
+}
+
+.search-field{
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+
+    -fx-border-color: #e5e7eb;
+    -fx-border-radius: 10;
+
+    -fx-padding: 8 15;
+    -fx-font-size: 13px;
+}
+
+/* =======================
+   TABLAS
+   ======================= */
+
+.modern-table{
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color: #e5e7eb;
+}
+
+.modern-table .column-header{
+    -fx-background-color: #f8fafc;
+}
+
+.modern-table .column-header-background{
+    -fx-background-color: #f8fafc;
+}
+
+.modern-table .column-header .label{
+    -fx-font-weight: bold;
+    -fx-text-fill: #374151;
+}
+
+.modern-table .table-row-cell{
+    -fx-background-color: white;
+}
+
+.modern-table .table-row-cell:hover{
+    -fx-background-color: #f3f4f6;
+}
+
+.modern-table .table-row-cell:selected{
+    -fx-background-color: #dbeafe;
+}
+
+/* =======================
+   GRAFICO
+   ======================= */
+
+.chart-panel{
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+
+    -fx-border-color: #e5e7eb;
+    -fx-border-radius: 12;
+}
+
+.chart-plot-background{
+    -fx-background-color: white;
+}
+
+.chart-series-line{
+    -fx-stroke: #14b8a6;
+    -fx-stroke-width: 3px;
+}
+
+.default-color0.chart-line-symbol{
+    -fx-background-color: #14b8a6;
+}
+
+.chart-vertical-grid-lines{
+    -fx-stroke: #eef2f7;
+}
+
+.chart-horizontal-grid-lines{
+    -fx-stroke: #eef2f7;
+}
+
+/* =======================
+   BOTONES
+   ======================= */
+
+.btn-primary{
+    -fx-background-color: #14b8a6;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+}
+
+.btn-primary:hover{
+    -fx-background-color: #0d9488;
+}
+
+.btn-secondary{
+    -fx-background-color: #6366f1;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+}
+
+.btn-secondary:hover{
+    -fx-background-color: #4f46e5;
+}
+
+.btn-danger{
+    -fx-background-color: #ef4444;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+}
+
+.btn-danger:hover{
+    -fx-background-color: #dc2626;
+}S

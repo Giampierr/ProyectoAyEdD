@@ -1,0 +1,266 @@
+.root {
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar {
+    -fx-background-color: #101a2e;
+}
+.logo-icon {
+    -fx-font-size: 22px;
+}
+.brand-title {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+.brand-subtitle {
+    -fx-text-fill: #8a93a8;
+    -fx-font-size: 11px;
+}
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #b7bfd1;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 12 10 12;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+.nav-button:hover {
+    -fx-background-color: #1a2540;
+    -fx-text-fill: white;
+}
+.nav-button-active {
+    -fx-background-color: #2f6dfb;
+    -fx-text-fill: white;
+}
+.nav-button-exit {
+    -fx-text-fill: #b7bfd1;
+}
+
+/* ---------- FONDO PRINCIPAL / TOP BAR ---------- */
+.main-bg {
+    -fx-background-color: #f4f6fb;
+}
+.top-bar {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #e7eaf1 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.page-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111827;
+}
+.page-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #8a93a8;
+}
+.user-icon {
+    -fx-font-size: 20px;
+    -fx-text-fill: #2f6dfb;
+}
+.user-name {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111827;
+}
+.user-email {
+    -fx-font-size: 11px;
+    -fx-text-fill: #8a93a8;
+}
+.content-box {
+    -fx-background-color: transparent;
+}
+.edge-to-edge {
+    -fx-background-color: transparent;
+}
+.edge-to-edge > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* ---------- TARJETAS KPI ---------- */
+.kpi-card {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-padding: 16;
+    -fx-spacing: 6;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 12, 0, 0, 3);
+}
+.kpi-icon-bg {
+    -fx-min-width: 34; -fx-min-height: 34;
+    -fx-max-width: 34; -fx-max-height: 34;
+    -fx-background-radius: 10;
+}
+.kpi-icon-blue   { -fx-background-color: #e6edff; }
+.kpi-icon-green  { -fx-background-color: #e3fbef; }
+.kpi-icon-purple { -fx-background-color: #f1e9fe; }
+.kpi-icon-pink   { -fx-background-color: #fde8f3; }
+.kpi-icon {
+    -fx-font-size: 15px;
+}
+.kpi-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6b7280;
+}
+.kpi-value {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111827;
+}
+.kpi-delta-up {
+    -fx-font-size: 11px;
+    -fx-text-fill: #16c47f;
+}
+.kpi-delta-neutral {
+    -fx-font-size: 11px;
+    -fx-text-fill: #8a93a8;
+}
+
+/* ---------- PANEL DE GAUGES (oscuro / neón) ---------- */
+.gauge-panel {
+    -fx-background-color: linear-gradient(to bottom right, #0b0f1e, #131a30);
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 20, 0, 0, 6);
+}
+.gauge-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+.gauge-subtitle {
+    -fx-font-size: 11px;
+    -fx-text-fill: #8a93a8;
+}
+.gauge-cluster-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: #8a93a8;
+}
+.gauge-caption {
+    -fx-font-size: 11px;
+    -fx-text-fill: #b7bfd1;
+}
+.gauge-percent {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+/* Arco "riel" de fondo de cada gauge */
+.gauge-track {
+    -fx-stroke: #253154;
+    -fx-stroke-width: 10;
+    -fx-fill: transparent;
+    -fx-stroke-line-cap: round;
+}
+/* Arcos de progreso con brillo neón (dropshadow simula el glow) */
+.gauge-fill-cyan {
+    -fx-stroke: #22d3ee;
+    -fx-stroke-width: 10;
+    -fx-fill: transparent;
+    -fx-stroke-line-cap: round;
+    -fx-effect: dropshadow(gaussian, #22d3ee, 12, 0.6, 0, 0);
+}
+.gauge-fill-purple {
+    -fx-stroke: #a855f7;
+    -fx-stroke-width: 10;
+    -fx-fill: transparent;
+    -fx-stroke-line-cap: round;
+    -fx-effect: dropshadow(gaussian, #a855f7, 12, 0.6, 0, 0);
+}
+.gauge-fill-magenta {
+    -fx-stroke: #ec4899;
+    -fx-stroke-width: 10;
+    -fx-fill: transparent;
+    -fx-stroke-line-cap: round;
+    -fx-effect: dropshadow(gaussian, #ec4899, 12, 0.6, 0, 0);
+}
+
+/* Columna Top 3 dentro del panel oscuro */
+.top3-box {
+    -fx-padding: 0 0 0 25;
+    -fx-border-color: #253154 transparent transparent transparent;
+    -fx-border-width: 0;
+}
+.top3-item {
+    -fx-background-color: #131c33;
+    -fx-background-radius: 10;
+    -fx-padding: 8 10 8 10;
+}
+.top3-icon {
+    -fx-font-size: 16px;
+}
+.top3-name {
+    -fx-font-size: 11px;
+    -fx-text-fill: white;
+    -fx-max-width: 170;
+}
+.top3-price {
+    -fx-font-size: 11px;
+    -fx-text-fill: #22d3ee;
+    -fx-font-weight: bold;
+}
+
+/* ---------- TARJETAS DE TABLAS ---------- */
+.table-card {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 12, 0, 0, 3);
+}
+.table-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #111827;
+}
+.custom-table {
+    -fx-background-color: transparent;
+}
+.custom-table .column-header-background {
+    -fx-background-color: transparent;
+}
+.custom-table .column-header, .custom-table .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #e7eaf1 transparent;
+}
+.custom-table .column-header .label {
+    -fx-text-fill: #8a93a8;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+.custom-table .table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #f0f2f7 transparent;
+}
+.custom-table .table-cell {
+    -fx-text-fill: #374151;
+    -fx-font-size: 12px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* Etiquetas de estado (pills) - aplicar vía CellFactory en el controller */
+.status-pill-success {
+    -fx-background-color: #e3fbef;
+    -fx-text-fill: #16c47f;
+    -fx-background-radius: 20;
+    -fx-padding: 3 10 3 10;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+.status-pill-danger {
+    -fx-background-color: #fde8e8;
+    -fx-text-fill: #ef4444;
+    -fx-background-radius: 20;
+    -fx-padding: 3 10 3 10;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+.status-pill-warning {
+    -fx-background-color: #fff4e0;
+    -fx-text-fill: #f59e0b;
+    -fx-background-radius: 20;
+    -fx-padding: 3 10 3 10;
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
