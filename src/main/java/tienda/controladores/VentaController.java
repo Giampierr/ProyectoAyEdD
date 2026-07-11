@@ -219,5 +219,20 @@ public class VentaController {
             ));
         });
 
+        //Boton Procesar
+        btnPagar.setOnAction(event -> {
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/pago.fxml"));
+
+                Parent root = loader.load();
+
+                Stage stage = (Stage) btnPagar.getScene().getWindow();
+
+                stage.setScene(new Scene(root));
+                stage.showAndWait();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
    }
 }
