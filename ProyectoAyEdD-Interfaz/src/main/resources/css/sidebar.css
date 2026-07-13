@@ -1,0 +1,33 @@
+.sidebar {
+    -fx-background-color: linear-gradient(to bottom, #4F6EF7, #3B5BDB);
+}
+
+.sidebar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+
+    -fx-alignment: CENTER_LEFT;
+
+    -fx-pref-height: 45;
+    -fx-max-width: Infinity;
+
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+
+    -fx-font-size: 14px;
+    -fx-padding: 0 0 0 15;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: rgba(255,255,255,0.15);
+    -fx-border-color : white;
+}
+
+.sidebar-button:pressed {
+    -fx-background-color: rgba(255,255,255,0.25);
+}
+
+.sidebar-button-active {
+    -fx-background-color: rgba(255,255,255,0.2);
+    -fx-font-weight: bold;
+}

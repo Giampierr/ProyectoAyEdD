@@ -1,0 +1,25 @@
+<Label text="Historial y Reporte de Ventas" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+<HBox spacing="20">
+    <VBox style="-fx-background-color: #f0f0f0; -fx-padding: 20; -fx-background-radius: 10;">
+        <Label text="Total Recaudado" style="-fx-font-size: 14px;"/>
+        <Label fx:id="lblTotalRecaudado" text="$0.00" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    </VBox>
+    <VBox style="-fx-background-color: #f0f0f0; -fx-padding: 20; -fx-background-radius: 10;">
+        <Label text="Ventas Realizadas" style="-fx-font-size: 14px;"/>
+        <Label fx:id="lblTotalTransacciones" text="0" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    </VBox>
+    <VBox style="-fx-background-color: #f0f0f0; -fx-padding: 20; -fx-background-radius: 10;">
+        <Label text="Ticket Promedio" style="-fx-font-size: 14px;"/>
+        <Label fx:id="lblTicketPromedio" text="$0.00" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+    </VBox>
+</HBox>
+
+<TableView fx:id="tblVentas" VBox.vgrow="ALWAYS">
+    <columns>
+        <TableColumn fx:id="colId" text="ID Venta" prefWidth="100"/>
+        <TableColumn fx:id="colCliente" text="Cliente" prefWidth="200"/>
+        <TableColumn fx:id="colFecha" text="Fecha" prefWidth="150"/>
+        <TableColumn fx:id="colMonto" text="Monto Total" prefWidth="150"/>
+    </columns>
+</TableView>

@@ -1,0 +1,166 @@
+.root-pago{
+    -fx-background-color:#f6f8fb;
+}
+.card{
+    -fx-background-color:white;
+
+    -fx-background-radius:14;
+    -fx-border-radius:14;
+
+    -fx-border-color:#e7ebf3;
+    -fx-border-width:1;
+}
+.title{
+    -fx-font-size:24px;
+    -fx-font-weight:bold;
+    -fx-text-fill:#1d3557;
+}
+.subtitle{
+    -fx-font-size:12px;
+    -fx-text-fill:#8b96a8;
+}
+.section-title{
+    -fx-font-size:16px;
+    -fx-font-weight:bold;
+    -fx-text-fill:#243b6b;
+}
+.text-search{
+
+    -fx-background-radius:10;
+
+    -fx-border-radius:10;
+
+    -fx-border-color:#dde3ee;
+
+    -fx-background-color:white;
+
+    -fx-padding:10;
+
+}
+.field-value{
+
+    -fx-background-color:#fafbfc;
+
+    -fx-border-color:#e5e9ef;
+
+    -fx-border-radius:8;
+
+    -fx-background-radius:8;
+
+    -fx-padding:8;
+
+    -fx-font-size:13px;
+
+}
+.btn-search{
+
+    -fx-background-color:#173f73;
+
+    -fx-background-radius:10;
+
+    -fx-text-fill:white;
+
+    -fx-font-weight:bold;
+
+}
+.btn-search:hover{
+
+    -fx-background-color:#1f528f;
+
+}
+.total-card{
+
+    -fx-background-color:#eefcf5;
+
+    -fx-background-radius:12;
+
+    -fx-border-radius:12;
+
+    -fx-border-color:#d8f3e5;
+
+}
+.total-price{
+
+    -fx-font-size:30px;
+
+    -fx-font-weight:bold;
+
+    -fx-text-fill:#17a05d;
+
+}
+.combo-payment{
+
+    -fx-background-radius:8;
+
+    -fx-border-radius:8;
+
+    -fx-border-color:#dde3ee;
+
+}
+.btn-danger {
+    -fx-background-color: white;
+    -fx-text-fill: #ef4444;
+    -fx-border-color: #ef4444;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+}
+.btn-buy{
+
+    -fx-background-color:#123b74;
+
+    -fx-background-radius:12;
+
+    -fx-text-fill:white;
+
+    -fx-font-size:16px;
+
+    -fx-font-weight:bold;
+
+}
+.btn-buy:hover{
+
+    -fx-background-color:#1b4d95;
+
+}
+.btn-order{
+
+    -fx-background-color:#19965f;
+
+    -fx-background-radius:12;
+
+    -fx-text-fill:white;
+
+    -fx-font-size:16px;
+
+    -fx-font-weight:bold;
+
+}
+.btn-order:hover{
+
+    -fx-background-color:#21a86c;
+
+}
+.table-view{
+
+    -fx-background-radius:12;
+
+    -fx-border-radius:12;
+
+    -fx-border-color:#e7ebf3;
+
+}
+.icon-container{
+    -fx-background-color: #eef4ff;
+    -fx-background-radius: 12;
+    -fx-min-width: 40;
+    -fx-min-height: 40;
+    -fx-alignment: center;
+}
+.icon-blue{
+    -fx-icon-size: 18;
+    -fx-icon-color: #1f4f8f;
+}
+.icon-white{
+    -fx-icon-size: 18;
+    -fx-icon-color: white;
+}

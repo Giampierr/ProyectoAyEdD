@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane prefHeight="827.0" prefWidth="969.0" styleClass="root-page" stylesheets="@../css/pago.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tienda.controladores.PagoController">
+   <children>
+      <HBox layoutX="83.0" layoutY="11.0" prefHeight="80.0" prefWidth="342.0" spacing="10.0" style="-fx-padding: 12;" styleClass="card">
+         <children>
+             <Label prefHeight="35.0" prefWidth="28.0" styleClass="icon-container">
+                 <graphic>
+                     <FontIcon iconLiteral="fas-credit-card" styleClass="icon-blue" />
+                 </graphic>
+             </Label>
+            <VBox prefHeight="54.0" prefWidth="248.0" styleClass="card">
+               <children>
+                  <Label styleClass="title" text="Pago" />
+                  <Label styleClass="subtitle" text="Buscar cliente y seleccionar tipo de venta" />
+               </children>
+            </VBox>
+         </children>
+
+      </HBox>
+      <HBox layoutX="83.0" layoutY="97.0" prefHeight="110.0" prefWidth="777.0" spacing="10.0" style="-fx-padding: 12;" styleClass="card">
+         <children>
+            <VBox prefHeight="100.0" prefWidth="766.0" spacing="10.0" styleClass="card">
+               <children>
+                   <Label prefHeight="25.0" prefWidth="210.0" styleClass="section-title" text="Buscar cliente por DNI">
+                       <graphic>
+                           <FontIcon iconLiteral="fas-users" styleClass="icon-blue" />
+                       </graphic>
+                   </Label>
+                  <HBox prefHeight="43.0" prefWidth="575.0" spacing="10.0" style="-fx-padding: 10;" styleClass="card">
+                     <children>
+                        <TextField fx:id="txtCliente" prefHeight="37.0" prefWidth="190.0" promptText="Ingrese el DNI del cliente" style="-fx-padding: 10;" styleClass="text-search" />
+                         <Button fx:id="btnBuscar" mnemonicParsing="false" prefHeight="36.0" prefWidth="128.0" styleClass="btn-search" text="Buscar">
+                             <graphic>
+                                 <FontIcon iconLiteral="fas-search" />
+                             </graphic>
+                         </Button>
+                        <Button fx:id="btnLimpiar" mnemonicParsing="false" prefHeight="39.0" prefWidth="148.0" styleClass="btn-order" text="Limpiar" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox layoutX="83.0" layoutY="227.0" prefHeight="241.0" prefWidth="777.0" spacing="10.0" style="-fx-padding: 12;">
+         <children>
+            <VBox prefHeight="84.0" prefWidth="776.0" spacing="10.0" style="-fx-padding: 10;" styleClass="card">
+               <children>
+                   <Label prefHeight="25.0" prefWidth="174.0" styleClass="section-title" text="Datos del cliente">
+                       <graphic>
+                           <FontIcon iconLiteral="fas-id-card" styleClass="icon-blue" />
+                       </graphic>
+                   </Label>
+                  <HBox prefHeight="43.0" prefWidth="575.0" spacing="10.0" style="-fx-padding: 15;" styleClass="card">
+                     <children>
+                        <VBox prefHeight="23.0" prefWidth="242.0" spacing="10.0" style="-fx-padding: 12;" styleClass="card">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="145.0" text="Nombres y  Apellidos :" />
+                              <Label fx:id="lblNombres" prefHeight="17.0" prefWidth="225.0" style="-fx-border-color: gray;" styleClass="field-value" />
+                              <Label prefHeight="17.0" prefWidth="145.0" text="Teléfono :" />
+                              <Label fx:id="lblTelefono" prefHeight="17.0" prefWidth="225.0" style="-fx-border-color: gray;" styleClass="field-value" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="23.0" prefWidth="242.0" spacing="10.0" style="-fx-padding: 12;" styleClass="card">
+                           <children>
+                              <Label prefHeight="17.0" prefWidth="145.0" text="DNI :" />
+                              <Label fx:id="lblDni" prefHeight="17.0" prefWidth="225.0" style="-fx-border-color: gray;" styleClass="field-value" />
+                              <Label prefHeight="17.0" prefWidth="145.0" text="Correo :" />
+                              <Label fx:id="lblCorreo" prefHeight="17.0" prefWidth="225.0" style="-fx-border-color: gray;" styleClass="field-value" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <VBox layoutX="79.0" layoutY="512.0" prefHeight="210.0" prefWidth="393.0" spacing="10.0" style="-fx-padding: 12; -fx-border-color: gray;" styleClass="card">
+         <children>
+             <Label prefHeight="18.0" prefWidth="182.0" text="Resumen de la venta">
+                 <graphic>
+                     <FontIcon iconLiteral="fas-shopping-cart" styleClass="icon-blue" />
+                 </graphic>
+             </Label>
+            <TableView fx:id="tblCarrito" prefHeight="124.0" prefWidth="367.0">
+              <columns>
+                <TableColumn fx:id="colProducto" prefWidth="100.0" text="Producto" />
+                <TableColumn fx:id="colCantidad" prefWidth="100.0" text="Cantidad" />
+                  <TableColumn fx:id="colPrecioUni" prefWidth="100.0" text="Precio Unit." />
+                  <TableColumn fx:id="colSubtotal" prefWidth="66.0" text="Subtotal" />
+              </columns>
+            </TableView>
+            <HBox prefHeight="40.0" prefWidth="367.0" spacing="10.0" style="-fx-padding: 10;" styleClass="card">
+               <children>
+                  <Label text="Total :" />
+                  <Label fx:id="lblTotal" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="485.0" layoutY="511.0" prefHeight="210.0" prefWidth="393.0" spacing="10.0" style="-fx-padding: 12; -fx-border-color: gray;" styleClass="card">
+         <children>
+             <Label prefHeight="17.0" prefWidth="133.0" styleClass="section-title" text="Total a pagar">
+                 <graphic>
+                     <FontIcon iconLiteral="fas-dollar-sign" styleClass="icon-green" />
+                 </graphic>
+             </Label>
+            <VBox prefHeight="112.0" prefWidth="367.0" style="-fx-border-color: green;" styleClass="total-card">
+               <children>
+                  <AnchorPane prefHeight="96.0" prefWidth="365.0">
+                     <children>
+                        <Label layoutX="148.0" layoutY="14.0" text="Monto total :" />
+                        <Label fx:id="lblTotal2" layoutX="86.0" layoutY="31.0" prefHeight="45.0" prefWidth="199.0" styleClass="total-price" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+            <Label text="Método de pago" />
+            <ComboBox fx:id="cbxTipoDePago" prefWidth="150.0" styleClass="combo-payment" />
+         </children>
+      </VBox>
+       <Button fx:id="btnComprar" layoutX="206.0" layoutY="736.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="270.0" styleClass="btn-buy" text="Comprar">
+           <graphic>
+               <FontIcon iconLiteral="fas-shopping-cart" styleClass="icon-white" />
+           </graphic>
+       </Button>
+       <Button fx:id="btnPedido" layoutX="499.0" layoutY="736.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="270.0" styleClass="btn-order" text="Pedido">
+           <graphic>
+               <FontIcon iconLiteral="fas-clipboard-list" styleClass="icon-white" />
+           </graphic>
+       </Button>
+      <Button fx:id="btnCancelar" layoutX="688.0" layoutY="29.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="190.0" styleClass="btn-danger" text="Cancelar" />
+   </children>
+</AnchorPane>
